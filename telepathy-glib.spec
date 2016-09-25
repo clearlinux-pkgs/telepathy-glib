@@ -4,7 +4,7 @@
 #
 Name     : telepathy-glib
 Version  : 0.99.11
-Release  : 1
+Release  : 2
 URL      : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.99.11.tar.gz
 Source0  : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.99.11.tar.gz
 Summary  : Access to Telepathy logs
