@@ -1,336 +1,106 @@
-telepathy-glib 0.99.11 (2014-05-14)
-===================================
-
-The “electioneering” release.
-
-API breaks:
-
-• "handle type" has been replaced with "entity type" in all function names,
-  properties, constants etc. ("git grep -i handle.type" will be useful)
-
-• tp_connection_manager_param_get_default() has been removed,
-  use tp_connection_manager_param_dup_default_variant() instead
-
-• tp_message_set() has been removed, use tp_message_set_variant() instead
-
-• tp_capabilities_get_channel_classes() has been removed, and
-  tp_capabilities_dup_channel_classes_variant() has been renamed to
-  tp_capabilities_dup_channel_classes(). Similarly,
-  the old TpCapabilities:channel-classes has been removed, and
-  TpCapabilities:channel-classes-variant has been renamed to
-  TpCapabilities:channel-classes
-
-• tp_account_get_avatar_async() has been removed, use
-  tp_account_dup_avatar_async() (which returns GBytes) instead
-
-• tp_text_channel_get_message_types() has been removed, use
-  tp_text_channel_supports_message_type() instead
-
-• TpAccount:connection-error-details, and the corresponding
-  argument in TpAccount::status-changed, changed from GHashTable to GVariant
-
-• TpChannelDispatchOperation:cdo-properties,
-  TpChannel:channel-properties and TpObserveChannelContext:observer-info
-  changed from GHashTable to GVariant
-
-• TpChannel no longer implements TpChannelIface;
-  TpChannel:entity-type, TpChannel:handle and TpChannel:channel-type
-  have changed from read/write/construct-only to read-only, so TpChannel
-  subclasses must stop passing handle-type or entity-type to the constructor
-
-• tp_dbus_connection_try_register_object() can export a GDBusObjectSkeleton;
-  this will use g_dbus_object_get_interfaces(), ignoring any TpSvc*
-  interfaces that are not represented in that list. Exporting a GDBusObject
-  that is not a GDBusObjectSkeleton is not currently allowed.
-
-• TpBaseProtocol and TpBaseConnection are now subclasses of
-  GDBusObjectSkeleton, and no longer implement any TpSvc* interfaces.
-  They no longer have virtual methods to list interface names; subclasses
-  are expected to register all their interfaces (TpSvc* or otherwise) via
-  g_dbus_object_skeleton_add_interface().
-
-• TpBaseContactList and TpPresenceMixin don't implement TpSvc* interfaces
-  either; instead, they call g_dbus_object_skeleton_add_interface()
-  on their associated TpBaseConnection.
-
-• TpSvcInterfaceSkeleton has moved to the -dbus library, but now has a
-  public constructor in that library.
-
-• The TpBaseConnectionClass.fill_contact_attributes() vfunc now takes
-  a GVariantDict argument. TpContactAttributeMap has been removed.
-
-• TpDBusPropertiesMixin communicates with GDBus on a per-interface basis
-  rather than by implementing TpSvcDBusProperties
-
-• TpPresenceMixin is now a GInterface. The only "glue" required is to
-  implement its virtual methods (which now take a TpPresenceMixin * first
-  argument), call tp_presence_mixin_init() in constructed(), and call
-  tp_presence_mixin_fill_contact_attributes() in fill_contact_attributes().
-
-• TpHandle is now a guint32, not a guint. There is a static assertion that
-  these are the same size; we might later add support for architectures
-  where their sizes differ, in the unlikely event that anyone finds one.
-
-• TpDBusPropertiesMixin has moved to the -dbus library, and is no longer
-  present in the class struct of public classes.
-
-• Accessing a missing property raises o.fd.DBus.Error.InvalidArgs,
-  not im.telepathy.v1.Error.NotImplemented. Similarly, trying to write
-  to a read-only property raises o.fd.DBus.Error.InvalidArgs,
-  not im.t.v1.Error.PermissionDenied.
-
-• Most GObject properties of TpBasePasswordChannel have been removed.
-
-• TpBaseConnection:dbus-status, TpBaseConnection:requestable-channel-classes
-  have been removed.
-
-• TpPresenceMixin no longer supports status parameters other than the
-  message, and its API has been simplified accordingly.
-
-• tp_group_mixin_change_members() takes a GVariant for the details.
-
-• Some unused API has been removed from TpGroupMixin.
-
-• The expected channel class for ContactSearch channels has changed to
-  match the specification (fd.o #77030).
-
-Other significant changes:
-
-• TpWeakRef now uses a GWeakRef internally
-
-telepathy-glib 0.99.10 (2014-04-03)
-===================================
-
-The “you and whose army?” release.
-
-API breaks:
-
-• telepathy-glib now uses GDBus' G_BUS_TYPE_SESSION, not
-  libdbus/dbus-glib's DBUS_BUS_STARTER, as its D-Bus connection:
-
-  · every function that previously involved a dbus-glib DBusGMethodInvocation
-    now uses a GDBus GDBusMethodInvocation
-  · public headers do not include <dbus/dbus-glib.h>
-  · D-Bus errors will now come from the G_IO_ERROR and G_DBUS_ERROR
-    domains
-  · object implementors need to be more careful to register well-known
-    objects at their documented object-paths *before* requesting the
-    corresponding bus names
-  · TP_DBUS_ERROR_UNKNOWN_REMOTE_ERROR has been replaced by
-    G_IO_ERROR_DBUS_ERROR
-  · TpProxy::interface-added, dbus-glib signals marshallers,
-    and the _init_known_interfaces() family of functions are no longer
-    required or implemented
-
-  However, dbus-glib's "specialized type" system is still used in the
-  public API, for now.
-
-  (fd.o #28782, Simon)
-
-• The "factory" construct-time property for all TpProxy subclasses is
-  now mandatory:
-
-  · tp_account_manager_set_default() and tp_account_manager_can_set_default()
-    have been removed, use tp_client_factory_set_default(),
-    tp_client_factory_can_set_default() and tp_client_factory_dup() instead.
-  · tp_account_manager_new() and tp_account_manager_new_with_factory() have
-    been removed, use tp_client_factory_dup_account_manager() instead.
-    tp_account_manager_dup() still exists, and is now equivalent to calling
-    tp_client_factory_dup_account_manager() on the result of
-    tp_client_factory_dup().
-  · tp_channel_dispatcher_new() has been removed, use
-    tp_client_factory_dup_channel_dispatcher() instead.
-  · tp_connection_manager_new() has been removed, use
-    tp_client_factory_ensure_connection_manager() instead.
-
-  (fd.o #76828; Xavier, Simon)
-
-• TpDBusDaemon has been replaced by TpClientFactory or GDBusConnection,
-  depending on context. (fd.o #76828; Xavier, Simon)
-
-• The "-core" shared library has gone away, and some functionality that
-  primarily used dbus-glib types (tp_asv_*, tp_g_value_slice_*,
-  tp_value_array_*) has moved into telepathy-glib-1-dbus. (fd.o #76855, Simon)
-
-telepathy-glib 0.99.9 (2013-03-25)
+telepathy-glib 0.24.1 (2014-08-25)
 ==================================
-
-The “scatterbrain” release.
-
-• Make the Logger properly parallel-installable: it writes logs to
-  XDG_DATA_HOME/telepathy-1/logs, and also reads from Telepathy 0.x locations
-  but does not write them (fd.o #70990, Guillaume)
-
-• Re-namespace examples to telepathy-1-example-* (Simon)
-
-• Start tracking ABI again (still no ABI guarantees or SONAME management,
-  but at least we're tracking symbol versioning) (fd.o #76462, Simon)
-
-• Hide some symbols which should not have been exported by the Logger library
-  (fd.o #76462, Simon)
-
-• Provide GNOME-style installed tests (only for telepathy-glib so far,
-  not for the Logger) if configured with --enable-installed-tests
-  (fd.o #74626, Simon)
-
-• Use GTest for all C/C++ tests
-
-• Avoid writing to XDG_CACHE_HOME in Logger tests
-
-telepathy-glib 0.99.8 (2013-03-19)
-==================================
-
-The “like spinning plates” release.
-
-Dependencies:
-
-• GLib ≥ 2.39.90
-• dbus-glib ≥ 0.102
-
-API breaks caused by telepathy-spec changes:
-
-• Account.AccountPropertyChanged has been replaced with
-  the standard o.fd.DBus.Properties.PropertiesChanged
-
-• Handle_Type is now Entity_Type, and all uses of the term have also been
-  renamed (TpEntityType, TargetEntityType, etc.)
-
-• HandleChannel's Requests_Satisfied parameter has changed from ao
-  (array of object path) to a{oa{sv}} (map from object path to its immutable
-  properties), replacing Handler_Info["request-properties"]. Observer
-  has had a similar change.
-
-Other API breaks:
-
-• Various APIs that previously took a GHashTable<string, GValue> now take
-  a GVariant of type G_VARIANT_TYPE_VARDICT, often by deleting the GHashTable
-  version and removing the _vardict suffix from an existing GVariant version
-
-• tp_message_peek has been superseded by tp_message_dup_part
-
-• TpMessage string accessors now return a copied string, and their names
-  contain "dup" instead of "get"
-
-• TpProtocol and TpTLSCertificate objects cannot be created directly,
-  go via TpClientFactory instead
-
-• The tpl-extensions pkg-config module has gone away
-
-Deleted draft API that never had a satisfactory implementation:
-
-• Account.I.ExternalPasswordStorage1
-• Channel.I.CredentialsStorage1
-• CM.I.AccountStorage1
-
-Additions:
-
-• TpLogger, a TpProxy subclass which hosts generated code for talking to
-  the Logger (but you should use libtelepathy-logger-1 instead)
-
-• tp_asv_from_vardict, tp_asv_to_vardict
-
-• tp_base_connection_get_account_path_suffix
-
-• more TpAccountChannelRequest high-level API
 
 Fixes:
 
+• base-client: fix potential uninitialized variable bug (Guillaume)
+• Fix a potential crash in contact-list example (fd.o #79006, Guillaume)
+
+
+telepathy-glib 0.24.0 (2014-03-26)
+==================================
+
+The “space Tolkien” release.
+
+Fixes since 0.23.3:
+
 • don't leak every D-Bus method call result, a regression in 0.23.1 (Simon)
+
+telepathy-glib 0.23.3 (2014-03-18)
+==================================
+
+This is the release candidate for the future 0.24.0 stable release.
+
+Enhancements:
+
+• TpProtocol gained API to access to its immutable properties as a
+  GVariant. (fd.o #55108, Guillaume)
+
+• TpCallStream and TpCallContent now inherit the factory from their
+  TpCallChannel. (fd.o #76168, Guillaume)
+
+Fixes:
 
 • fix a memory leak when cleaning up TpProxy "prepare" requests
   (fd.o #76000, Simon)
 
 • fix a memory leak for paths to contacts' avatar data (fd.o #76000, Simon)
 
-telepathy-glib 0.99.7 (2014-01-29)
-==================================
+• fix crashes in TpFileTransferChannel with GLib 2.39 (fd.o #72319, Xavier)
 
-The “jigsaw falling into place” release.
+• fix some paths memory leaks (fd.o #76119, Guillaume)
 
-API breaks:
+• tp_list_connection_managers_async() now terminates properly if there is no
+  CM installed. (fd.o #68892, Guillaume)
 
-• Spec 0.99.7
-  · Client API (Observer, ChannelDispatchOperation and Handler) are now channel
-    singular.
-  · Connection.NewChannels has been replaced by NewChannel
-  · Connection.Requests.RequestableChannelClasses has been moved to Connection
-  · ChannelDispatchOperation.HandleWithTime() has been merged into
-     HandleWith()
-  · Handler.HandleWith::User_Action_Time: use a signed type
-  · Channel.I.DTMF has been removed and re-implemented into Content.I.DTMF and
-    Channel.T.Call.
-  · Account.I.Hidden, AccountManager.I.Hidden have been removed
-
-• TpChannelManager now uses a TpChannelManagerRequest object instead of an
-  opaque pointer to represent a specific channel request. (fd.o #69430, Guillaume)
-
-telepathy-glib 0.99.6 (2014-01-13)
-==================================
-
-The “little by little” release.
-
-API breaks:
-
-• Spec 0.99.6
-  · merge Conn.I.Contacts into Connection
-  · do not include Conn.I.Requests in Connection.Interfaces
-
-• Better parallel-installability (fd.o #49737, Simon):
-  · rename Logger's GIR to TelepathyLogger-1
-  · explicitly ask for TelepathyGLib-1 in examples
-
-• TpContactsMixin no longer exists: instead, TpBaseConnection has a
-  fill_contacts_attribute() virtual method (fd.o #50093, Simon)
-
-• Replace TpPresenceMixinClass.get_contact_statuses (multiple contacts)
-  with a simpler TpPresenceMixinClass.get_contact_status (one contact)
-  (fd.o #50093, Simon)
-
-• TpBaseConnection has more ABI padding (fd.o #50093, Simon)
-
-• New mandatory method TpBlockableContactListInterface.is_blocked
-  (fd.o #50093, Simon)
-
-Other changes:
-
-• Include telepathy-farstream in telepathy-glib source releases
-  (fd.o #73409, Simon)
-
-• Enable GLib 2.36 deprecation warnings (fd.o #71048, Simon)
-
-• TpFileTransferChannel: fix possible crashes (fd.o #72319, Xavier)
-
-• Improve debug output for tp_list_connection_managers (fd.o #68390;
-  Simon, Guillaume)
-
-telepathy-glib 0.99.5 (2013-11-11)
-==================================
-
-The “high and dry” release.
-
-API breaks:
-
-• Spec 0.99.5
-  · All D-Bus namespaces have changed from im.telepathy1 to im.telepathy.v1
-  · The Renaming1.Renamed signal carries the identifier, not just the handle
-  · .manager and .client files go in $XDG_DATA_DIRS/telepathy-1 instead
-    of $XDG_DATA_DIRS/telepathy, to be parallel-installable with Telepathy 0
-
-• IRCCommand1 is marked as stable
-
-Major functionality changes:
-
-• telepathy-logger is now part of the telepathy-glib module.
-  Configure with --disable-logger if you don't want it.
-
-There was no 0.99.4 release for this module.
-
-telepathy-glib 0.99.3 (2013-10-28)
+telepathy-glib 0.23.2 (2014-02-26)
 ==================================
 
 Enhancements:
 
-• Don't strip ABI versions from generated code (Simon)
+• TpBaseConnection now has an "account-path-suffix" property
+  (fd.o #74030, Xavier)
+
+• New high level TpAccountChannelRequest API, including tubes, Conference and
+  SMSChannel. (fd.o #75450, Guillaume)
+
+• 'TargetHandleType: None' is now automatically added when requesting a
+  channel with TpAccountChannelRequest if no handle type has been defined.
+  (fd.o #75450, Guillaume)
+
+telepathy-glib 0.23.1 (2014-02-04)
+==================================
+
+The “undead space elves” release.
+
+Dependencies:
+
+• GLib 2.36 or later is required
+
+Deprecations:
+
+• TpPresenceMixin: optional arguments are deprecated, apart from a
+  string named "message". This matches our current D-Bus API.
+
+Enhancements:
+
+• tp_protocol_normalize_contact_async(),
+  tp_protocol_identify_account_async(), and high-level API for
+  the Protocol Addressing and Presence interfaces (fd.o #71048, Simon)
+
+• More accessors for TpPresenceStatusSpec, which is now a boxed type
+  (fd.o #71048, Simon)
+
+• tp_connection_manager_param_dup_variant_type() (fd.o #71093, Simon)
+
+• Better debug output (fd.o #68390, #71048; Simon)
+
+Fixes:
+
+• In the examples, specifically ask for "TelepathyGlib-0.12" (this API
+  version), not Telepathy 1.0 (fd.o #49737, Simon)
+
+• Improve tests' isolation from the real session bus (Xavier)
+
+• Fix a critical warning for each new connection under GLib 2.39
+  (fd.o #72303, Xavier)
+
+• Fix some possible crashes in file transfer channels, particularly
+  under GLib 2.39 (fd.o #72319, Xavier)
+
+• Correct tp_account_request_set_avatar documentation (Xavier)
+
+• Fix a TpConnection reference-leak in TpBaseClient (Guillaume)
 
 telepathy-glib 0.23.0 (2013-10-28)
 ==================================
@@ -363,7 +133,6 @@ Fixes:
   (fd.o #68149, Simon)
 
 • channel-group: don't crash if no message has been provided (Guillaume)
-
 
 telepathy-glib 0.22.0 (2013-10-02)
 ==================================
@@ -689,7 +458,7 @@ Fixes:
 • Fix generation of reentrant-methods.list in highly parallel builds
   (fd.o #52480, Ross Burton)
 
-• TpBaseChannel: assert that the subclass sets TargetEntityType. (Will)
+• TpBaseChannel: assert that the subclass sets TargetHandleType. (Will)
 
 telepathy-glib 0.19.5 (2012-07-24)
 ==================================
@@ -1675,7 +1444,7 @@ telepathy-glib 0.14.4 (2011-04-15)
 
 Enhancements:
 
-• fd.o#27459: TpConnection now avoids a bunch of redundant D-Bus method
+• fd.o#27459: TpConnection now avoids a bunch of redundant D-Bus method 
   calls when preparing the CORE feature with recent services, lowering
   latency (oggis)
 
@@ -2872,42 +2641,378 @@ The "can we have a hippopotamus?" release.
 
 This version includes both the bugfixes from today's 0.10.4 release.
 
+Enhancements:
+
+↠ Upgrade to telepathy-spec 0.19.5 (smcv)
+  → Connection.Status, Connection.Interfaces properties (all telepathy-glib
+    CMs that use TpBaseConnection should gain support for these automatically)
+  → Observer.Recover property
+  → ContactInfo interface
+
+↠ Add TpWeakRef, a wrapper for a weak reference and an optional extra pointer
+  (smcv)
+
+↠ fd.o #21097: push the "feature" concept from TpAccount and TpAccountManager
+  into the TpProxy base class, and use it to implement feature-preparation
+  for core functionality of TpChannel, TpConnection, TpConnectionManager (smcv)
+
+↠ add TP_CHANNEL_FEATURE_CHAT_STATES (smcv)
+
+↠ fd.o #27511: add TpCapabilities, TP_CONNECTION_FEATURE_CAPABILITIES and
+  TP_CONTACT_FEATURE_CAPABILITIES (cassidy)
+
+↠ fd.o #27690, #27709: add boxed types for TpIntSet,
+  TpConnectionManagerProtocol and TpConnectionManagerParam (danni, smcv)
+
+↠ fd.o #27741: make it easier to export objects without using tp_get_bus(),
+  particularly in connection managers (smcv)
+
+↠ fd.o #26211: generate TP_TOKEN_${INTERFACE}_${TOKEN} constants for contact
+  attributes and handler capability tokens (KA)
+
 Fixes:
 
-• unescape_protocol: stop replacing '_' with '-' (Guillaume)
+↠ Use the fast-path for Location correctly (cassidy)
 
-telepathy-glib 0.99.2 (2013-09-27)
+↠ fd.o #27714: support G_CONNECT_AFTER in tp_g_signal_connect_object, and
+  document exactly which flags we support (Maiku, smcv)
+
+↠ fd.o #27537: fix assertion failure if getting contact attributes
+  fails (cassidy)
+
+↠ fd.o #27695: only try the slow path in Contacts if the fast path isn't
+  supported (cassidy)
+
+telepathy-glib 0.11.2 (2010-04-06)
 ==================================
 
-The “no surprises” release.
+The "not actually deprecated" release.
 
-This is another snapshot, so that the 'next' branches of telepathy-salut
-and telepathy-haze can work.
+This version includes all the bugfixes from today's 0.8.3 and 0.10.3 releases
+(they were all included in the previous version, in fact).
+
+Un-deprecations:
+
+☀ tp_get_bus is not considered to be deprecated yet after all; many connection
+  managers use it, and the current alternative is considerably more verbose.
+  This reopens fd.o #24114. (smcv)
+
+telepathy-glib 0.11.1 (2010-04-05)
+==================================
+
+The “26-bit address bus” release.
+
+Enhancements:
+
+◈ Add tp_str_empty() macro, a shortcut for ‘NULL or ""’ (smcv)
+
+◈ Add TP_TYPE_UCHAR_ARRAY, a dbus-glib GArray of guchar (i.e. the default
+  representation for the D-Bus 'ay' type) (cassidy)
+
+◈ Add tp_account_set_avatar_async() (cassidy)
+
+◈ Add TP_CONTACT_FEATURE_LOCATION (cassidy)
+
+Fixes:
+
+◈ Only fail “make check” on documentation warnings in unreleased versions, to
+  avoid build failures in releases when gtk-doc in a distribution doesn't have
+  the same definition of full coverage that we do (smcv)
+
+◈ Fix compatibility with gtk-doc 1.14 (smcv)
+
+telepathy-glib 0.11.0 (2010-03-31)
+==================================
+
+The ‘bah, you removed my “beautiful” quotes’ release.
 
 Dependencies:
 
-• GLib ≥ 2.34 is required
+‣ GLib, GObject and GIO ≥ 2.22 are now required
 
-API changes:
+Deprecations:
 
-• Protocol names may now contain underscores, but not hyphen/minus
-  (telepathy-spec 0.99.1 says this is OK).
+‣ fd.o #22206: all the re-entrant functions (of the form tp_FOO_run_until_ready
+  and tp_cli_FOO_run_BAR) are deprecated in this version, please use
+  asynchronous calls instead (smcv)
 
-• Connection manager names may now start with underscores
-  (telepathy-spec 0.99.2 says this is OK)
+‣ fd.o #24114: tp_get_bus() is deprecated, please use tp_dbus_daemon_dup()
+  followed by tp_proxy_get_dbus_connection() (smcv)
+
+Enhancements:
+
+‣ Update to telepathy-spec 0.19.3 (smcv)
+  ❧ generate code for new Connection.Interfaces, Connection.Status properties,
+    and implement them in TpBaseConnection
+  ❧ generate code for Connection.Interface.Balance
+
+‣ Add an example connection manager for the experimental Call API that will
+  eventually replace StreamedMedia (smcv)
+
+‣ Add tp_g_socket_address_from_variant,
+  tp_address_variant_from_g_socket_address (danni)
+
+‣ Add tp_g_value_slice_new_byte (smcv)
+
+‣ Add tp_value_array_unpack, the inverse of tp_value_array_build (danni)
+
+‣ Make various minor improvements to the tests (smcv)
 
 Fixes:
 
-• Merged from telepathy-glib master, see NEWS-0.x
+‣ tp_account_set_nickname_async: set the right source_tag (cassidy)
 
-telepathy-glib 0.99.1 (2013-09-17)
+‣ fd.o #27281: clarify documentation for tp_message_mixin_sent, using
+  telepathy-spec 0.19.2 as a reference (Maiku)
+
+‣ Avoid using re-entrant functions, other than in regression tests (smcv)
+
+‣ fd.o #21956: clean up documentation/defaults of TpContact properties (smcv)
+
+‣ telepathy.am: if copied into a project where nothing is checked for
+  unreleased version annotations, don't hang waiting for input (smcv)
+
+telepathy-glib 0.10.2 (2010-03-31)
 ==================================
 
-The “house of cards” release.
+The "is that a koala in your roster or are you just nearby?" release.
 
-This is a snapshot of the branch that will become telepathy-glib 1.0,
-corresponding to telepathy-spec 0.99.1. It is not really usable yet:
-we're releasing it to have a fixed point when upgrading connection
-managers and other related projects.
+Fixes:
 
-See UPGRADING for some notes on what has changed in the API and ABI.
+* TpAccount: correctly add interfaces such as Avatars (danni)
+
+* Make GetContactAttributes() in GLib CMs tolerate unsupported interfaces,
+  as per telepathy-spec 0.19.2 (wjt)
+
+* Improve documentation of TpContactsMixinFillContactAttributesFunc (mikhailz)
+
+telepathy-glib 0.10.1 (2010-03-24)
+==================================
+
+The "usually quite loud" release.
+
+This version includes all the bugfixes from 0.8.2, plus some documentation
+improvements in code added since 0.8.
+
+Fixes:
+
+* Don't make an idle call to put received messages in the TpMessageMixin
+  queue, potentially avoiding a reference leak (Vivek)
+
+* tp_contacts_mixin_set_contact_attribute now takes a const gchar *
+  instead of a gchar * (mikhailz)
+
+* Escape the doc-comments better in generated service interfaces (smcv)
+
+* Fix some typos and broken cross-references in the documentation, and
+  improve the TpAccount documentation (smcv)
+
+* Chain up to GObject's dispose method when destroying a
+  TpBaseConnectionManager (smcv)
+
+* Remove a misleading debug message from tp_list_connection_names (wjt)
+
+telepathy-glib 0.10.0 (2010-01-21)
+==================================
+
+The "where did you get your bear?" release.
+
+This release begins a bugfix-only 0.10.x branch, in which new API/ABI will no
+longer be added; 0.11.x development releases will continue to be made from
+the master branch. The 0.10.x branch targets the D-Bus API from
+telepathy-spec 0.18.0.
+
+The major enhancement since 0.8.x is that TpAccountManager and TpAccount,
+previously simple stub classes, now have high-level API to manipulate
+accounts. GLib 2.20 and dbus-glib 0.82 are now required, and telepathy-glib
+now links against GIO.
+
+Enhancements since 0.9.2:
+
+* Add compile-time warnings if the results of functions that allocate memory
+  are ignored; for a couple of these functions it's not obvious that a
+  result is allocated, leading to non-obvious leaks (smcv)
+
+* Add compile-time warnings if the results of certain functions with no
+  side-effects are ignored, which is harmless but makes no sense (smcv)
+
+* Improve lcov.am, syncing with telepathy-gabble (smcv)
+
+Fixes since 0.9.2:
+
+* fd.o #23848: when making a release, make the build system check for files
+  that indicate unreleased status; correct a few such comments (wjt)
+
+* fd.o #25149: when a TpAccount is invalidated (deleted), signal connection
+  disconnection first (smcv)
+
+* Exit the main loop gracefully when CMs are disconnected from the session bus
+  (sjoerd)
+
+* fd.o #14603: don't set fatal criticals in tp_run_connection_manager, CMs
+  are now responsible for doing this (sjoerd)
+
+* fd.o #25600: fix inadvertant GLib 2.20 dependency (jonny)
+
+* In code generation tools (glib-ginterface-gen.py), allow D-Bus methods whose
+  names are C keywords (smcv)
+
+* Fix with-session-bus.sh dbus-monitor logging when /bin/sh is not bash (smcv)
+
+telepathy-glib 0.9.2 (2009-12-03)
+=================================
+
+The "old-fashioned, with no silly mods" release.
+
+Dependencies:
+
+* dbus-glib (>= 0.82) is now required
+
+Enhancements:
+
+* Add tp_value_array_build utility function (sjoerd)
+
+* Add tp_g_signal_connect_object, a non-leaky version of
+  g_signal_connect_object (alsuren)
+
+* fd.o #25283: add constants for namespaced D-Bus property names,
+  such as TP_PROP_CHANNEL_CHANNEL_TYPE (smcv)
+
+* fd.o #25235: add <telepathy-glib/telepathy-glib.h> which includes
+  the most commonly-used headers (danni)
+
+Fixes:
+
+* fd.o #24257: make sure tp_account_prepare, tp_account_manager_prepare
+  will fail if the object is invalidated, rather than never finishing
+  (alsuren)
+
+* fd.o #25051: fix a use-after-free in TpAccountManager by disconnecting
+  signal handlers on destruction (alsuren)
+
+* fd.o #24654: fix a potential use-after-free in TpAccount and TpAccountManager
+  by copying the list of features required (alsuren)
+
+* Future-proof TpAccount and TpAccountManager to allow more than one Feature
+  (alsuren)
+
+* fd.o #24394: improve code portability to Windows headers and compilers,
+  based on patches from Matti Reijonen (smcv)
+
+* fd.o #25121: fix failure to link when -Wl,--no-add-needed is used, which is
+  the (faster) default behaviour for binutils-gold (Debian #556486) (smcv)
+
+* Fix various coverity nits, including a missing call to va_end,
+  and a typo in the documentation (smcv)
+
+* fd.o #25359: alter code generation to cope with arbitrary UTF-8 in the
+  spec (wjt)
+
+* fd.o #25335: glib-client-gen: annotate deprecated D-Bus methods (jonny)
+
+* Don't rely on enum types being unsigned (sjoerd)
+
+* fd.o #25181: avoid unnecessary D-Bus calls re-fetching existing TpContact
+  objects (alsuren)
+
+* fd.o #25384: if accounts fail to prepare while the account manager is
+  preparing, drop them from the list of valid accounts rather than
+  never terminating (alsuren)
+
+* If the fake AccountManager doesn't appear for some reason during AM
+  regression tests, don't start the system implementation (alsuren)
+
+* Fix a theoretical reference-leak in TpAccountManager, and some memory
+  leaks in examples and regression tests (smcv)
+
+telepathy-glib 0.9.1 (2009-10-15)
+=================================
+
+The "to quote Rob: sdflkaytliahdskljfhgaqgh;shf" release.
+
+Fixes:
+
+* Corrected the GLib dependency to 2.20 (this was also needed for 0.9.0,
+  but that fact was undocumented) (smcv)
+
+* Corrected the error message given when a write-only D-Bus property
+  is read (Pekka Pessi)
+
+* Work around GLib 2.20 being less const-correct than 2.22 (jonny)
+
+* fd.o #23853: if a connection manager is discovered not to be running while
+  TpConnectionManager has a ListProtocols call in-flight, then a new instance
+  of the CM starts up and replies to that call, don't crash with an assertion
+  failure (smcv)
+
+* If a connection manager returns error from GetParameters(), don't dereference
+  a NULL pointer and segfault (smcv)
+
+* When asked to activate or introspect a connection manager, don't do anything
+  until we have at least worked out whether it was initially running, in order
+  to provide the documented behaviour (smcv)
+
+* When getting parameter details from a running connection manager, consider
+  parameters called "password" or ending with "-password" to be secret even
+  if they lack the SECRET flag, as was already done when reading .manager
+  files (smcv)
+
+telepathy-glib 0.9.0 (2009-09-28)
+=================================
+
+The "purging all the lies" release.
+
+Dependencies:
+
+* GLib 2.20 is now required.
+* telepathy-glib now links to GIO as well as GLib and GObject (in practice
+  they're packaged together, and we already depended on a new enough GLib
+  version that it would come with GIO).
+
+Enhancements:
+
+* TpAccountManager, TpAccount: add convenience API similar to libempathy's
+  (jonny, with contributions from wjt/danni/sjoerd/smcv)
+
+* telepathy-glib now uses Automake 1.11's "silent rules" feature for
+  kernel-style output; as a result, we no longer use shave. If you were
+  previously using --enable-shave to get prettier output, use
+  --enable-silent-rules instead, and upgrade to Automake >= 1.11 if you will
+  be altering the build system. (jonny)
+
+telepathy-glib 0.8.0 (2009-09-24)
+=================================
+
+The "line in the sand" release.
+
+This release begins a bugfix-only 0.8.x branch, in which new API/ABI will no
+longer be added; 0.9.x development releases will continue to be made from
+the master branch.
+
+Summary of API changes since 0.6.x:
+
+* Since 0.7.35, it is no longer guaranteed that the self-handle in
+  TpBaseConnection is set to 0 when the state changes to DISCONNECTED;
+  instead, it remains valid until the connection is disposed. This will cause
+  assertion failures during disconnection in telepathy-sofiasip < 0.5.17 and
+  telepathy-gabble < 0.7.9.
+
+Summary of major enhancements since 0.6.x:
+
+* updated telepathy-spec from 0.16.x to 0.18.0, with many new interfaces, the
+  AccountManager, the ChannelDispatcher, and Clients
+* added TpProxy, a base class representing remote D-Bus objects
+  (see <http://smcv.pseudorandom.co.uk/2009/05/tp-proxy/>)
+* added subclasses of TpProxy for all the major Telepathy objects (apart from
+  Debug, which will be added later)
+* added TpContact, an object representing a Telepathy contact
+* added macros for interface-name GQuarks, and for Telepathy dbus-glib GTypes
+* added the tp_asv_get_foo() family of functions to manipulate a{sv} maps
+* used versioned symbols to document the ABI
+* implemented various simple example connection managers and clients
+
+Changes since 0.7.37:
+
+* spec: update from 0.17.28 to 0.18.0 (no real changes) (smcv)
+* ContactList example CM: fix a crash during shutdown (andrunko)
+* StreamedMedia example CM: check for direction changes correctly (andrunko)
