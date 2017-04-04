@@ -4,14 +4,14 @@
 #
 Name     : telepathy-glib
 Version  : 0.24.1
-Release  : 3
+Release  : 4
 URL      : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
 Source0  : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
 Summary  : GLib utility library for the Telepathy framework
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: telepathy-glib-lib
 Requires: telepathy-glib-data
+Requires: telepathy-glib-lib
 Requires: telepathy-glib-doc
 BuildRequires : dbus-dev
 BuildRequires : docbook-xml
@@ -71,6 +71,7 @@ lib components for the telepathy-glib package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1491327087
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -82,6 +83,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
+export SOURCE_DATE_EPOCH=1491327087
 rm -rf %{buildroot}
 %make_install
 
@@ -90,7 +92,8 @@ rm -rf %{buildroot}
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/gir-1.0/TelepathyGLib-0.12.gir
+/usr/lib64/girepository-1.0/TelepathyGLib-0.12.typelib
+/usr/share/gir-1.0/*.gir
 
 %files dev
 %defattr(-,root,root,-)
@@ -258,9 +261,8 @@ rm -rf %{buildroot}
 /usr/include/telepathy-1.0/telepathy-glib/variant-util.h
 /usr/include/telepathy-1.0/telepathy-glib/verify.h
 /usr/include/telepathy-1.0/telepathy-glib/version.h
-/usr/lib64/*.so
-/usr/lib64/girepository-1.0/TelepathyGLib-0.12.typelib
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libtelepathy-glib.so
+/usr/lib64/pkgconfig/telepathy-glib.pc
 
 %files doc
 %defattr(-,root,root,-)
@@ -451,4 +453,5 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libtelepathy-glib.so.0
+/usr/lib64/libtelepathy-glib.so.0.84.1
