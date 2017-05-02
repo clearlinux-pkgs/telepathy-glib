@@ -4,7 +4,7 @@
 #
 Name     : telepathy-glib
 Version  : 0.24.1
-Release  : 4
+Release  : 5
 URL      : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
 Source0  : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
 Summary  : GLib utility library for the Telepathy framework
