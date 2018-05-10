@@ -6,7 +6,7 @@
 #
 Name     : telepathy-glib
 Version  : 0.24.1
-Release  : 7
+Release  : 8
 URL      : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
 Source0  : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
 Source99 : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz.asc
