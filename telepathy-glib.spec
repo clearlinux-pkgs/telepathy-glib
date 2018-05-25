@@ -6,7 +6,7 @@
 #
 Name     : telepathy-glib
 Version  : 0.24.1
-Release  : 8
+Release  : 9
 URL      : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
 Source0  : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
 Source99 : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz.asc
@@ -77,8 +77,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517764178
-%configure --disable-static PYTHON=/usr/bin/python2
+export SOURCE_DATE_EPOCH=1527271872
+%configure --disable-static PYTHON=/usr/bin/python
 make  %{?_smp_mflags}
 
 %check
@@ -89,7 +89,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1517764178
+export SOURCE_DATE_EPOCH=1527271872
 rm -rf %{buildroot}
 %make_install
 
