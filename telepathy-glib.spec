@@ -6,16 +6,16 @@
 #
 Name     : telepathy-glib
 Version  : 0.24.1
-Release  : 9
+Release  : 10
 URL      : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
 Source0  : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
 Source99 : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz.asc
-Summary  : GLib utility library for the Telepathy framework
+Summary  : GLib bindings for the Telepathy D-Bus protocol
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: telepathy-glib-data
-Requires: telepathy-glib-lib
-Requires: telepathy-glib-doc
+Requires: telepathy-glib-data = %{version}-%{release}
+Requires: telepathy-glib-lib = %{version}-%{release}
+Requires: telepathy-glib-license = %{version}-%{release}
 BuildRequires : dbus-dev
 BuildRequires : docbook-xml
 BuildRequires : gobject-introspection-dev
@@ -28,10 +28,14 @@ BuildRequires : pkgconfig(gio-unix-2.0)
 BuildRequires : pkgconfig(glib-2.0)
 
 %description
-==============
-telepathy-glib
-==============
-This is a library for GLib-based Telepathy components.
+telepathy-glib examples
+=======================
+You can get more examples of telepathy-glib usage from:
+* the telepathy-glib branch of telepathy-inspector (versions >= 0.5.1 will use
+telepathy-glib)
+* the core connection managers (particularly telepathy-gabble; also
+telepathy-salut, telepathy-sofiasip and telepathy-haze)
+* the regression tests (tests/ in the source release)
 
 %package data
 Summary: data components for the telepathy-glib package.
@@ -44,9 +48,10 @@ data components for the telepathy-glib package.
 %package dev
 Summary: dev components for the telepathy-glib package.
 Group: Development
-Requires: telepathy-glib-lib
-Requires: telepathy-glib-data
-Provides: telepathy-glib-devel
+Requires: telepathy-glib-lib = %{version}-%{release}
+Requires: telepathy-glib-data = %{version}-%{release}
+Provides: telepathy-glib-devel = %{version}-%{release}
+Requires: telepathy-glib = %{version}-%{release}
 
 %description dev
 dev components for the telepathy-glib package.
@@ -63,10 +68,19 @@ doc components for the telepathy-glib package.
 %package lib
 Summary: lib components for the telepathy-glib package.
 Group: Libraries
-Requires: telepathy-glib-data
+Requires: telepathy-glib-data = %{version}-%{release}
+Requires: telepathy-glib-license = %{version}-%{release}
 
 %description lib
 lib components for the telepathy-glib package.
+
+
+%package license
+Summary: license components for the telepathy-glib package.
+Group: Default
+
+%description license
+license components for the telepathy-glib package.
 
 
 %prep
@@ -77,7 +91,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1527271872
+export SOURCE_DATE_EPOCH=1557099929
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static PYTHON=/usr/bin/python
 make  %{?_smp_mflags}
 
@@ -89,8 +110,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1527271872
+export SOURCE_DATE_EPOCH=1557099929
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/telepathy-glib
+cp COPYING %{buildroot}/usr/share/package-licenses/telepathy-glib/COPYING
 %make_install
 
 %files
@@ -271,7 +294,7 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/telepathy-glib.pc
 
 %files doc
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/gtk-doc/html/telepathy-glib/TpBaseCallChannel.html
 /usr/share/gtk-doc/html/telepathy-glib/TpBaseCallContent.html
 /usr/share/gtk-doc/html/telepathy-glib/TpBaseCallStream.html
@@ -461,3 +484,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 /usr/lib64/libtelepathy-glib.so.0
 /usr/lib64/libtelepathy-glib.so.0.84.1
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/telepathy-glib/COPYING

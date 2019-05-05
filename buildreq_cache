@@ -1,0 +1,4 @@
+0.24.1
+dbus-dev
+gobject-introspection-dev
+pkgconfig(dbus-glib-1)
