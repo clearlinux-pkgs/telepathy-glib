@@ -6,11 +6,11 @@
 #
 Name     : telepathy-glib
 Version  : 0.24.1
-Release  : 11
+Release  : 12
 URL      : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
 Source0  : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz
-Source99 : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz.asc
-Summary  : GLib bindings for the Telepathy D-Bus protocol
+Source1  : https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz.asc
+Summary  : GLib utility library for the Telepathy framework
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: telepathy-glib-data = %{version}-%{release}
@@ -28,14 +28,10 @@ BuildRequires : pkgconfig(gio-unix-2.0)
 BuildRequires : pkgconfig(glib-2.0)
 
 %description
-telepathy-glib examples
-=======================
-You can get more examples of telepathy-glib usage from:
-* the telepathy-glib branch of telepathy-inspector (versions >= 0.5.1 will use
-telepathy-glib)
-* the core connection managers (particularly telepathy-gabble; also
-telepathy-salut, telepathy-sofiasip and telepathy-haze)
-* the regression tests (tests/ in the source release)
+==============
+telepathy-glib
+==============
+This is a library for GLib-based Telepathy components.
 
 %package data
 Summary: data components for the telepathy-glib package.
@@ -85,35 +81,37 @@ license components for the telepathy-glib package.
 
 %prep
 %setup -q -n telepathy-glib-0.24.1
+cd %{_builddir}/telepathy-glib-0.24.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1557099929
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1586220523
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static PYTHON=/usr/bin/python
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1557099929
+export SOURCE_DATE_EPOCH=1586220523
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/telepathy-glib
-cp COPYING %{buildroot}/usr/share/package-licenses/telepathy-glib/COPYING
+cp %{_builddir}/telepathy-glib-0.24.1/COPYING %{buildroot}/usr/share/package-licenses/telepathy-glib/480ff2fd1236e94295d10551b0b333296f639300
 %make_install
 
 %files
@@ -487,4 +485,4 @@ cp COPYING %{buildroot}/usr/share/package-licenses/telepathy-glib/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/telepathy-glib/COPYING
+/usr/share/package-licenses/telepathy-glib/480ff2fd1236e94295d10551b0b333296f639300
