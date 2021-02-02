@@ -1,8 +1,246 @@
+commit d4c364d64f6426c7d929e14288e87d03f704bd6a
+Author: Alexander Akulich <akulichalexander@gmail.com>
+Date:   2021-01-26 18:38:26 +0300
+
+    Prepare release 0.24.2
+
+commit e7dcfacbf54caff1bb4103cec6985a18db5db923
+Author: Alexander Akulich <akulichalexander@gmail.com>
+Date:   2021-01-26 18:35:36 +0300
+
+    NEWS: Change the target release to 0.24.2
+
+commit 9bb136076bc8757a967d5a58fccc592976887f97
+Merge: 2ec256464 9c6c6fb52
+Author: Alexander Akulich <akulichalexander@gmail.com>
+Date:   2021-01-26 18:23:28 +0300
+
+    Merge 'master' into telepathy-glib-0.24 (the branch has only fixes)
+
+commit 2ec2564642ca3c3e84cc7fc0c29c5da2567201dd
+Merge: 7c43fdc26 2487d4f72
+Author: Alexander Akulich <akulichalexander@gmail.com>
+Date:   2021-01-26 18:20:10 +0300
+
+    Merge telepathy-master into telepathy-glib-0.24 excluding some changes
+    
+    Exclude revert "Upload documentation to the 0.24.x location"
+    Exclude revert "Disable warnings about deprecated functions for stable branch"
+
+commit 9c6c6fb5203d8cb73064a02cc6b147aa91908952
+Author: Ivaylo Dimitrov <ivo.g.dimitrov.75@gmail.com>
+Date:   2020-08-27 13:31:03 +0300
+
+    protocol: fix a memory leak
+    
+    Signed-off-by: Ivaylo Dimitrov <ivo.g.dimitrov.75@gmail.com>
+
+commit fd7626ee3cc965f15fe78d9f45e713ebefd83a99
+Author: Jakub Kulík <kulikjak@gmail.com>
+Date:   2020-05-19 11:50:44 +0200
+
+    Tests: Make tests Python 3 compatible
+
+commit 8b3ef714d8f94b96eaa9af238abe2b2f62b60bae
+Author: Jakub Kulík <kulikjak@gmail.com>
+Date:   2020-05-19 09:26:29 +0200
+
+    Sort generated types and adjust expected accordingly
+
+commit 0868f6d539d25c3b67e7cb10ed4ad21ce77f411e
+Author: Ting-Wei Lan <lantw@src.gnome.org>
+Date:   2017-06-05 22:10:12 +0800
+
+    TpBasePasswordChannel: fix gtk-doc comment for finished signal
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=101301
+
+commit 13a8d52077f0415d79c0f7aba2af50db01458021
+Author: Fabrice Bellet <fabrice@bellet.info>
+Date:   2016-11-09 10:49:27 +0100
+
+    debug-sender: fix messages queue locking
+
+commit 2e8b2cc0db09b781d99e3755bb6d01548037fe7b
+Author: Fabrice Bellet <fabrice@bellet.info>
+Date:   2016-12-15 11:36:05 +0100
+
+    call-channel: fix a memory leak
+
+commit 76cc2d96a5601572639032d33c2e1a16ff8a8905
+Author: Alexander Akulich <akulichalexander@gmail.com>
+Date:   2019-12-12 23:35:26 +0300
+
+    Tests: Adjust expected gtypes sources to conform with the types order
+
+commit e92d895158feacf7b0e4b3b102525447d61b3013
+Author: Alexander Akulich <akulichalexander@gmail.com>
+Date:   2019-12-12 23:35:19 +0300
+
+    tools/glib-gtypes-generator.py: Sort generated types
+
+commit ab13da946b2839a79e199f59e57ff984ebf9ef98
+Author: Alexey Andreyev <aa13q@ya.ru>
+Date:   2019-12-12 19:22:00 +0300
+
+    Port tools/manager-file.py to Python 3
+
+commit 64fac8c6983be656d8fdbe8f3fe51b00753a2b73
+Author: Alexander Akulich <akulichalexander@gmail.com>
+Date:   2019-09-15 15:46:16 +0300
+
+    Port make-release-mail.py to Python 3
+
+commit 45ca39448d90d960fa003d3e5e118453fb7dceab
+Author: Alexander Akulich <akulichalexander@gmail.com>
+Date:   2019-09-25 01:54:12 +0300
+
+    xincludator.py: Fix behaviour on LANG=C
+    
+    Use UTF-8 encoding instead of 'None', because spec XMLs contain
+    non-ASCII symbols, such as copyright sign.
+
+commit 739afb4e9ef4a0b3ee124d0a188757069791b1a6
+Author: George Kiagiadakis <gkiagia@tolabaki.gr>
+Date:   2016-09-01 18:03:25 +0300
+
+    build: fix previous commit for out-of-source running of autogen.sh
+    
+    Previous commit: dc39be2757bd7fa789c3db834d8d701b1f54f785
+    This commit makes the final diff match the one by Alban Browaeys,
+    as attached in bug 59705, which addresses some good points that
+    Simon had made in his review. It is more portable and more clean
+    this way.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=59705
+    https://bugs.freedesktop.org/show_bug.cgi?id=94391
+
+commit e03967c263fc628e1a3301c390353f7c17243c20
+Author: Sebastian Geiger <sbastig@gmx.net>
+Date:   2016-07-01 23:29:54 +0200
+
+    Enable silent builds
+    
+    Bug: https://bugs.freedesktop.org/show_bug.cgi?id=96774
+    Reviewed-by: Debarshi Ray <rishi@gnu.org>
+
+commit 26ed60ccf4efe7f3fed149ecd057a52329a03084
+Author: George Kiagiadakis <gkiagia@tolabaki.gr>
+Date:   2016-06-18 14:21:52 +0300
+
+    Update NEWS
+
+commit 2764a6785a0d56c9a0341ec146dc715fed6704b4
+Author: Philip Withnall <philip.withnall@collabora.co.uk>
+Date:   2015-06-16 10:21:47 +0100
+
+    tests: Fix a service file path to fix the build with installed tests
+    
+    Two directories were the wrong way round.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=90991
+
+commit e86a31fba2acb8b4f0cfd9e022dbe73f587241b8
+Author: Iain Lane <iain.lane@canonical.com>
+Date:   2015-10-02 15:21:13 +0100
+
+    tests: Remove a G_GNUC_UNUSED which isn't true any more
+
+commit dc39be2757bd7fa789c3db834d8d701b1f54f785
+Author: Philip Withnall <philip@tecnocode.co.uk>
+Date:   2016-03-04 01:20:40 +0000
+
+    build: cd to the $srcdir in autogen.sh for running gtkdocize
+    
+    gtkdocize needs to run in the $srcdir (or have a --srcdir argument
+    passed to it) so that it can find configure.[ac|in]. Ensure that’s the
+    case in autogen.sh.
+    
+    This fixes autogen.sh in a srcdir ≠ builddir environment.
+
+commit 1f15dc935b65a7296dcf815b4da31a3d3b68f116
+Author: George Kiagiadakis <gkiagia@tolabaki.gr>
+Date:   2016-06-18 11:33:59 +0300
+
+    tests: eliminate duplicate test case paths
+    
+    Seems like this doesn't work with recent versions of glib
+
+commit d27684c488ceee4f2f54f549738adab0e2e8165d
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2014-09-17 12:14:24 +0100
+
+    Replace tp_verify_* with equivalent G_STATIC_ASSERTs
+    
+    This was breaking the build: gtk-doc no longer understands verify.h.
+
+commit 2487d4f72c00fbac6fa2f9e32e4e72404e24ae96
+Merge: 7494959b2 7c43fdc26
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2014-09-17 11:55:28 +0100
+
+    Merge remote-tracking branch 'origin/telepathy-glib-0.24'
+
+commit 7494959b21e00acfc853728a230cb9dd55e46df5
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2014-09-17 11:53:44 +0100
+
+    Revert "Upload documentation to the 0.24.x location"
+    
+    This reverts commit fb9e80acf4504706a9a52c9bca735362dd5411c7.
+
+commit 6d399eaec1ab6381c57a371320528fda5d2e3e7c
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2014-09-17 11:53:35 +0100
+
+    Revert "Don't check documentation completeness in this stable branch"
+    
+    This reverts commit 0273bfb815ef74115d614f5e5f04e013374f7a01.
+
+commit e79273e710e7c045542ff856f31ab6edbb29d5a8
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2014-09-17 11:53:26 +0100
+
+    Revert "Disable warnings about deprecated functions for stable branch"
+    
+    This reverts commit d622628afac82b057fde9315cbb6e1cf022a3f3e.
+
+commit 7c43fdc26f561018c3ba66314974d5db45081415
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2014-08-25 14:41:02 +0200
+
+    set nano flag
+
 commit c834ef1a50a97cbfae7a0d560ff806fd5aa7ffe8
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2014-08-25 14:28:42 +0200
 
     0.24.1
+
+commit bee265a2a8e37dc549bbbfcce9d7a67a298b07e7
+Merge: e01067b4c ff81777b6
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2014-05-26 14:09:24 +0200
+
+    Merge branch 'telepathy-glib-0.24'
+
+commit e01067b4cb9b31e562b656e3af32e26b46fcb36f
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2014-05-21 10:54:22 +0200
+
+    test-connection-error: don't check errors twice
+    
+    We are already using g_assert_error() to check those.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=79006
+
+commit 93d10077e2ff5c629e6ca6eed2d4ed801eb964ad
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2014-05-21 10:49:37 +0200
+
+    account-request: remove useless 'priv' variable
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=79006
 
 commit ff81777b6176f5379a8c1f6152625f498757ddb1
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
@@ -17,6 +255,14 @@ Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2014-05-26 13:46:54 +0200
 
     base-client: fix potential uninitialized variable bug
+
+commit 1880685e4cf1116dee132915f9e545d8e5d2ad31
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2014-05-08 15:18:27 +0200
+
+    stop hardcoding python's path in .py scripts
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=76495
 
 commit 3ba6a273a477221c9285c323b64bf63b804e887a
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -115,14 +361,14 @@ Date:   2014-03-14 12:56:45 +0100
     Partially fix fdo#76168.
 
 commit 10259fa5d3b5dddc3b2202a36e4b6b621890fab1
-Merge: 087e104 86db955
+Merge: 087e10432 86db955ee
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2014-03-13 15:41:20 +0100
 
     Merge branch 'telepathy-glib-0.22'
     
     Conflicts:
-    	telepathy-glib/contact.c
+            telepathy-glib/contact.c
 
 commit 86db955eede16bf794c3ba7b3355183ca11a5a17
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
@@ -135,14 +381,14 @@ Date:   2014-03-13 15:27:00 +0100
     Fix fdo#76119
 
 commit 087e1043269d361b1f349b1cf123ac10506e4bbc
-Merge: e8c6823 3d96ce6
+Merge: e8c682307 3d96ce695
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2014-03-13 13:54:16 +0000
 
     Merge branch 'telepathy-glib-0.22'
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit 3d96ce6954390613bf19bf8e5cf28ab1957717f2
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -340,15 +586,15 @@ Date:   2014-02-04 12:51:58 +0000
     [added (transfer full) as requested in review -smcv]
 
 commit 64e9a2cfc53c6786e0a1005f244fa7a8e635d8c7
-Merge: 640e19a bba70fc
+Merge: 640e19a07 bba70fce0
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2014-01-29 12:58:38 +0000
 
     Merge branch 'telepathy-glib-0.22'
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit bba70fce033c7b5fcc120fcfce715ec79ca1361a
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -407,7 +653,7 @@ Date:   2014-01-24 15:07:28 -0500
     AccountRequest: fix doc typo
 
 commit d96df54afb4ba104165359d32f52054ab95a3f04
-Merge: e1d4f54 7717303
+Merge: e1d4f5439 77173033e
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2014-01-20 14:46:17 +0100
 
@@ -487,14 +733,14 @@ Date:   2013-12-04 14:09:18 -0500
     error to the user.
 
 commit 441fed1e0828b8fc6b94bd5f66c7cb222d09ef20
-Merge: 8313306 1b28e0c
+Merge: 831330683 1b28e0ca4
 Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
 Date:   2013-11-26 09:00:59 -0500
 
     Merge branch 'telepathy-glib-0.22'
 
 commit 1b28e0ca43acec40f708d480e2824743561c5b97
-Merge: d4388c7 3c1c43c
+Merge: d4388c7c1 3c1c43cc2
 Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
 Date:   2013-11-26 09:00:43 -0500
 
@@ -739,7 +985,7 @@ Date:   2013-10-28 12:05:36 +0100
     spec 0.27.3
 
 commit c38e41c0ae63ca6082381981bb7c71a14a7e8f94
-Merge: 79acc09 d4388c7
+Merge: 79acc094f d4388c7c1
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2013-10-24 14:54:32 +0200
 
@@ -809,15 +1055,15 @@ Date:   2013-10-02 16:47:19 +0100
     Reviewed-by: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 
 commit 7b6e496317a332b81fb079256f7995cf082b5c57
-Merge: e7b9ae3 96cfbd0
+Merge: e7b9ae33a 96cfbd0e8
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-10-02 16:44:31 +0100
 
     Merge branch 'telepathy-glib-0.22'
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit 96cfbd0e8401ab06b729cfa5b092d5939899dc6b
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -861,7 +1107,7 @@ Date:   2013-10-01 16:25:49 +0100
     Reviewed-by: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 
 commit 0f5f605ab1217e008174f80ab4518e8464f3bc94
-Merge: 8e83a1c fcfa097
+Merge: 8e83a1cbe fcfa0973c
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-10-02 14:52:58 +0100
 
@@ -938,21 +1184,21 @@ Date:   2013-09-27 15:07:50 +0200
     stop using tp_account_is_prepared()
 
 commit a02af787eab20a08a678a215c917b022c2ee6f8f
-Merge: 31d338b 05c0077
+Merge: 31d338bb4 05c0077c2
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-09-26 16:32:42 +0100
 
     Merge branch 'telepathy-glib-0.22'
 
 commit 05c0077c29a05d375ef543bc329ced29cb0259f2
-Merge: b5c43a8 a211090
+Merge: b5c43a86d a21109040
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-09-26 16:32:32 +0100
 
     Merge branch 'telepathy-glib-0.20' into telepathy-glib-0.22
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit a211090400176d2d433f69a2e38f9c1356a3abda
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -1050,7 +1296,7 @@ Date:   2013-09-26 15:34:14 +0100
     0.24 branch
 
 commit 5765148158effd59f99976b5d6c59d08a3117ac7
-Merge: dea8df9 b5c43a8
+Merge: dea8df907 b5c43a86d
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-09-26 15:26:12 +0100
 
@@ -1548,14 +1794,14 @@ Date:   2013-09-06 13:14:07 +0100
     Reviewed-by: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 
 commit 6adc3a97491b8aef64ac00a5efa5685fc5f2c6b7
-Merge: 9efb996 eefe5a1
+Merge: 9efb9966e eefe5a1fc
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-09-04 14:04:58 +0100
 
     Merge branch 'telepathy-glib-0.20'
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit eefe5a1fc22c4ac9911a2fc7f16299c454ecebea
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -1582,15 +1828,15 @@ Date:   2013-08-20 21:03:10 +0100
     more NEWS
 
 commit 69f749d936ea1f060f9465e41854efd8af4f39d7
-Merge: 6c2ba1a 2ebe4df
+Merge: 6c2ba1a53 2ebe4dff9
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-08-20 21:02:46 +0100
 
     Merge branch 'telepathy-glib-0.20'
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit 2ebe4dff95aea5d9c6485f6fa3c64b86b2930a36
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -1681,14 +1927,14 @@ Date:   2013-06-20 15:40:45 +0100
     Prepare 0.20.3
 
 commit 66733cb8347bbc541dadd87936127f9d73e479bf
-Merge: a455287 a95947e
+Merge: a45528703 a95947e2e
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-06-11 15:48:20 +0100
 
     Merge branch 'telepathy-glib-0.20'
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit a95947e2e2ad6724c6b1e74910354fb0fa4897e1
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -1759,14 +2005,14 @@ Date:   2013-06-07 17:08:53 +0100
     Bug: https://bugs.freedesktop.org/show_bug.cgi?id=65517
 
 commit 1fbfb30038dbdda78f79533138fec05a270ea485
-Merge: 8e922ea ba0b31b
+Merge: 8e922eaeb ba0b31b42
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-06-10 15:26:52 +0100
 
     Merge branch 'telepathy-glib-0.20'
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit ba0b31b425d5871c4141ff0a7f477ec4e296e926
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -1786,7 +2032,7 @@ Date:   2013-03-12 11:11:02 +0100
     Reviewed-by: Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 commit 8e922eaeba7b7875b01697c4c1bac2df7e8ac1b9
-Merge: f85107b ccbcb74
+Merge: f85107b36 ccbcb74e3
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-06-10 15:02:38 +0100
 
@@ -1832,7 +2078,7 @@ Date:   2013-06-07 17:49:58 +0100
     Acked-by: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 
 commit 2acff880f5bcbd6a69baaad960ea3a029e34736e
-Merge: 60b2bbd 65cfeeb
+Merge: 60b2bbdce 65cfeebe2
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-06-10 14:52:10 +0100
 
@@ -1863,7 +2109,7 @@ Date:   2013-06-07 17:42:15 +0100
     Reviewed-by: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 
 commit 60b2bbdce8ebe22152ac2078bb095a3eb0bef668
-Merge: f58e406 8e6b343
+Merge: f58e406cf 8e6b3438e
 Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
 Date:   2013-05-22 11:02:30 +0200
 
@@ -1878,14 +2124,14 @@ Date:   2013-05-22 10:51:06 +0200
     Fixes fdo#64837
 
 commit f58e406cfffc1782ece080a17177271c098a1e0e
-Merge: 5d5c119 5cb65fa
+Merge: 5d5c11908 5cb65fa97
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2013-04-14 11:55:14 +0100
 
     Merge branch 'telepathy-glib-0.20' and update NEWS
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit 5cb65fa971d4461b1f6fc6fd79a4f5b6fff3a8cc
 Author: Will Thompson <will.thompson@collabora.co.uk>
@@ -1913,15 +2159,15 @@ Date:   2013-01-23 11:34:20 +0000
     can annotate it as an array to fix this particular function.
 
 commit 5d5c11908eb9b6e91455416d96e41a7a636c56e5
-Merge: d3e062e 0b008a2
+Merge: d3e062e6c 0b008a263
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-04-04 15:59:26 +0100
 
     Merge branch 'telepathy-glib-0.20' and update NEWS
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit 0b008a263cfe39d5fcb128d9076c22dfec8905a7
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -2016,7 +2262,7 @@ Date:   2013-03-29 18:16:39 +0100
     TpConnection: self->priv->self_contact is leaked
 
 commit 484abc61967d4b18b8aa97f9fe5b15d6e9475920
-Merge: a0f78fa c7dab2d
+Merge: a0f78fab8 c7dab2d3c
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-04-02 10:09:34 +0100
 
@@ -2045,7 +2291,7 @@ Date:   2013-03-19 10:41:19 +0100
     GroupMixin: Use DEBUG() instead of printf()
 
 commit 819310eaf22c882481ac72b44f07c6be9c7af3bf
-Merge: 81b4e43 a33573f
+Merge: 81b4e43cd a33573ff2
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2013-03-12 16:40:22 +0100
 
@@ -2058,7 +2304,7 @@ Date:   2013-03-12 16:25:43 +0100
     start_file_transfer(): unset timer_id
 
 commit 81b4e43cd4a71dbd0cb71150ef6c7fcf3cbd77b1
-Merge: e61dd17 9ea571e
+Merge: e61dd1715 9ea571eca
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2013-03-12 15:19:44 +0100
 
@@ -2095,24 +2341,24 @@ Date:   2013-01-28 14:01:10 +0000
     NEWS for master
 
 commit fc5fdd26527e77f5f84a08f4475cc9984ccd7533
-Merge: 18dd2cc bb3d4a4
+Merge: 18dd2cc61 bb3d4a427
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-01-28 13:52:17 +0000
 
     Merge branch 'telepathy-glib-0.20'
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit bb3d4a427f8bd28a83896e499b64755534de02c5
-Merge: 949324d 55f7253
+Merge: 949324dbc 55f725396
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-01-28 13:50:51 +0000
 
     Merge branch 'telepathy-glib-0.18' into telepathy-glib-0.20
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit 55f7253966837f86aa68eb56ed8df534c6484ac6
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -2153,7 +2399,7 @@ Date:   2013-01-07 16:57:04 +0100
     simple-account: add tp_tests_simple_account_add_uri_scheme()
 
 commit edd3e68fb24ffbeaf4b1073971bdecb0c4591a02
-Merge: b3570e8 949324d
+Merge: b3570e8e7 949324dbc
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2013-01-09 10:00:56 +0000
 
@@ -2178,24 +2424,24 @@ Date:   2013-01-08 09:59:13 +0100
     avoid the deprecation warning as it contains GLib's versions macros.
 
 commit 3c76b3c7833675bf04e28575805da874f07bee51
-Merge: 08a0b1b 12e8b21
+Merge: 08a0b1b34 12e8b2155
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-01-07 13:03:09 +0000
 
     Merge branch 'telepathy-glib-0.20'
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit 12e8b215512e99b8f11a2800b8f9842c59dd38d6
-Merge: 308408b a0f0298
+Merge: 308408b98 a0f0298c9
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-01-07 11:55:28 +0000
 
     Merge branch 'telepathy-glib-0.18' into telepathy-glib-0.20
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit a0f0298c9a2c6b69c7a1d6f6098fc20be4b82483
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -2243,15 +2489,15 @@ Date:   2013-01-03 18:19:08 +0000
     NEWS for 0.21
 
 commit 71ed6c18ca1c52d11256dadfbb4a2e530b5ae9c9
-Merge: 8759a8f 308408b
+Merge: 8759a8f11 308408b98
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2013-01-03 18:18:39 +0000
 
     Merge branch 'telepathy-glib-0.20'
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit 308408b98358b701a629b2b7821af81eaecc0239
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -2431,7 +2677,7 @@ Date:   2012-10-10 14:15:01 +0200
     Deprecate tp_g_key_file_get_(u)int64, GLib has it since 2.26
 
 commit acd25c4ddc583f4fbfe127c3dae2f3d5a1e58b03
-Merge: b203d23 ce8d1f6
+Merge: b203d2368 ce8d1f6ed
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-10-08 16:22:16 +0100
 
@@ -2447,14 +2693,14 @@ Date:   2012-10-08 14:32:12 +0100
     in the former, you have to do it explicitly.
 
 commit b203d2368f6f3d92d9be10b140be94dd00450a1d
-Merge: 75a6ae1 e39ce95
+Merge: 75a6ae1fe e39ce95db
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-10-08 13:26:41 +0100
 
     Merge branch 'telepathy-glib-0.20'
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit e39ce95dbf2b2c57fb4621291a450aa8584fb193
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -3082,7 +3328,7 @@ Date:   2012-09-03 11:14:34 +0200
     Bug: https://bugs.freedesktop.org/show_bug.cgi?id=54425
     
     Conflicts:
-    	telepathy-glib/base-media-call-content.c
+            telepathy-glib/base-media-call-content.c
 
 commit f55630f7da156b0773e999ac70916d340f7b23e0
 Author: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
@@ -3096,7 +3342,7 @@ Date:   2012-09-03 11:10:01 +0200
     correct.
     
     Conflicts:
-    	telepathy-glib/base-media-call-content.c
+            telepathy-glib/base-media-call-content.c
 
 commit a04137272f0468fc1f4904280a02633cea60c998
 Author: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
@@ -3205,7 +3451,7 @@ Date:   2012-08-27 18:04:51 +0100
     Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
 commit 1a4d0f347efae2d4d7e8a8523ea8280086867d34
-Merge: f208911 926ddbe
+Merge: f2089116f 926ddbefa
 Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
 Date:   2012-08-27 17:55:54 +0100
 
@@ -3266,15 +3512,15 @@ Date:   2012-08-13 10:58:39 +0100
     NEWS
 
 commit 505fe8deebb5d45dbc6dc19c741c57b525fe8f50
-Merge: e293209 21d9f38
+Merge: e29320964 21d9f3824
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-08-13 10:56:31 +0100
 
     Merge branch 'telepathy-glib-0.18'
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit e293209646eee5b6c3c00f8644e627db31d843de
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -3383,7 +3629,7 @@ Date:   2012-07-25 12:58:16 +0100
     | make[2]: Entering directory `/buildarea1/yocto-autobuilder/yocto-slave/nightly-x86/build/build/tmp/work/i586-poky-linux/telepathy-glib-0.19.2-r0/telepathy-glib-0.19.2/telepathy-glib'
     | /bin/mkdir -p _gen
     | ( cd . && cat versions/0.7.0.abi [...] versions/0.19.2.abi  ) | \
-    | 		/bin/grep '^tp_cli_.*_run_.*' > _gen/reentrant-methods.list.tmp
+    |               /bin/grep '^tp_cli_.*_run_.*' > _gen/reentrant-methods.list.tmp
     | /bin/sh: line 1: _gen/reentrant-methods.list.tmp: No such file or directory
     | make[2]: *** [_gen/reentrant-methods.list] Error 1
     
@@ -3408,7 +3654,7 @@ Date:   2012-07-24 16:25:18 +0200
     Prepare 0.19.5 release
 
 commit bf772bf88572d235e905eea9a67e168b886bf670
-Merge: 523691b e2f99aa
+Merge: 523691b44 e2f99aa39
 Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
 Date:   2012-07-24 16:17:38 +0200
 
@@ -3493,14 +3739,14 @@ Date:   2012-07-09 16:38:27 +0100
     Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
 commit 528770ed041b494a23dc00b4e0b1f5b4ee5c75f9
-Merge: 8e50904 ec9a04f
+Merge: 8e5090498 ec9a04f13
 Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
 Date:   2012-07-06 17:01:50 +0100
 
     Merge branch '51441-get-interfaces'
     
     Conflicts:
-    	telepathy-glib/base-connection-manager.c
+            telepathy-glib/base-connection-manager.c
     
     Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
@@ -4147,7 +4393,7 @@ Date:   2012-05-13 15:26:09 +0200
     because ContactList does not go through the slow path.
 
 commit b3aa3ffb6683d92ccc4eeae8f8cb9c11e8eb4575
-Merge: d4abcf3 1499277
+Merge: d4abcf399 149927722
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-05-11 17:02:34 +0100
 
@@ -4309,7 +4555,7 @@ Date:   2012-05-10 18:35:01 +0100
     Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
 commit 8e87e0eeabeefb59ac6f0869dda86320f035bdd7
-Merge: 9e6ee0f 253b2ee
+Merge: 9e6ee0fc8 253b2ee2e
 Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
 Date:   2012-05-10 15:37:10 +0100
 
@@ -5532,7 +5778,7 @@ Date:   2012-05-03 13:08:46 +0100
     Version-annotate tp_contact_is_self too
 
 commit d23ad5d02837f526d9ba804e7fb664725151a8b4
-Merge: aa611fb 59e580c
+Merge: aa611fb00 59e580c56
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-05-03 13:06:17 +0100
 
@@ -5704,14 +5950,14 @@ Date:   2012-05-02 13:53:22 +0200
     That module is itself mostly deprecated and replaced by channel-contacts.c
 
 commit 58b6f88c53bb68d468f4cbdfdf25bb750300387f
-Merge: df95069 f3681d4
+Merge: df950691f f3681d4dd
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-05-02 12:15:26 +0100
 
     Merge branch 'telepathy-glib-0.18'
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit f3681d4dddcfbb86525dcf2b9371231ad3681de5
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -6099,7 +6345,7 @@ Date:   2012-04-27 14:15:31 +0200
     https://bugs.freedesktop.org/show_bug.cgi?id=49213
 
 commit 414e19f9d4021cd4b353fff01da1b8ce9ba2df7b
-Merge: 2556ea7 5d2f1f6
+Merge: 2556ea7ff 5d2f1f6a6
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2012-04-27 10:44:05 +0200
 
@@ -6147,15 +6393,15 @@ Date:   2012-04-23 11:00:57 +0200
     Fix typo in gtkdoc tags
 
 commit ec1e840e3aa541304742620396011bb3e74f57fb
-Merge: 109fa9c 3e49a76
+Merge: 109fa9cf7 3e49a76cd
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-04-20 18:31:34 +0100
 
     Merge branch 'telepathy-glib-0.18'
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit 3e49a76cd11ab42610ac498cd0d0a66e580d6f63
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -6384,7 +6630,7 @@ Date:   2012-04-12 18:17:21 +0100
     Bug: https://bugs.freedesktop.org/show_bug.cgi?id=30422
 
 commit 48942a44e3250c097347cd7197cc29bb954b9d71
-Merge: f464c89 bab960e
+Merge: f464c89e6 bab960e0f
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-04-16 19:53:41 +0100
 
@@ -6483,14 +6729,14 @@ Date:   2012-04-12 16:38:34 +0100
     Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
 commit 13a33ce1628ced2b54370dce06dabc5940efdd34
-Merge: 2d2991d 66d1a07
+Merge: 2d2991d46 66d1a078e
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-04-13 12:56:07 +0100
 
     Merge branch 'telepathy-glib-0.18', rejecting non-fatal g-ir-scanner warnings
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit 66d1a078e9d52791ad53db2ce7a94e817e86d12e
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -6553,7 +6799,7 @@ Date:   2012-04-10 14:33:53 +0100
     Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
 commit 4b9ed8f4feaca5b7cef26cfd7c0e0066b0960a76
-Merge: 9f15b96 0065a23
+Merge: 9f15b9669 0065a23ce
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-04-12 15:45:34 +0100
 
@@ -6590,18 +6836,18 @@ Date:   2012-04-12 14:01:40 +0100
     Reviewed-by: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 
 commit 9f15b9669e02238c3efee3471d5a6f2398559d04
-Merge: be03dcd 3302343
+Merge: be03dcdf3 3302343b9
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-04-12 13:33:01 +0100
 
     Merge branch 'telepathy-glib-0.18', rejecting 0.18-specific changes
     
     Conflicts:
-    	NEWS
-    	telepathy-glib/base-connection.c
-    	telepathy-glib/dbus-properties-mixin.c
-    	telepathy-glib/presence-mixin.c
-    	tools/c-constants-gen.py
+            NEWS
+            telepathy-glib/base-connection.c
+            telepathy-glib/dbus-properties-mixin.c
+            telepathy-glib/presence-mixin.c
+            tools/c-constants-gen.py
 
 commit 3302343b9dbe8246e1fda0d75db2145d8a9520bd
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -6651,7 +6897,7 @@ Date:   2012-04-12 11:52:31 +0100
     0.19 NEWS
 
 commit 3c0276a87da6ae9540b1e28c795c1715ad48f671
-Merge: ac5d4e9 e2b5e25
+Merge: ac5d4e98c e2b5e25a3
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-04-12 11:51:44 +0100
 
@@ -6769,7 +7015,7 @@ Date:   2012-04-11 11:59:32 +0100
     Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
 commit 0b77bfd9e045e5c4b9df0f072d32052146c2b648
-Merge: 5c58330 76b0d3c
+Merge: 5c58330c3 76b0d3cc3
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-04-10 13:52:17 +0100
 
@@ -6900,7 +7146,7 @@ Date:   2012-04-02 16:23:52 -0400
     Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
 commit dcab14f903605fc2f0c162e45b1c322966eb46c2
-Merge: 6275753 126261c
+Merge: 6275753ca 126261cf2
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2012-04-02 16:46:25 +0100
 
@@ -7276,7 +7522,7 @@ Date:   2012-03-21 16:06:49 -0400
     BaseMediaCallChannel: Only wait for streams to start if they were sending to finish unhold
 
 commit 7e1e016abba25e84ae0e8ed311877174ac082a9a
-Merge: afcafad ff2a82b
+Merge: afcafad12 ff2a82b1c
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2012-03-21 14:18:13 +0000
 
@@ -8145,36 +8391,36 @@ Date:   2012-02-20 15:29:08 +0000
     Remove support for the Mute interface, not stable yet
 
 commit c99370d3e1532073f526378155bb5183a4f50a3f
-Merge: 89ebc5c 50fb23a
+Merge: 89ebc5c79 50fb23a47
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-02-20 16:35:23 +0000
 
     Merge remote-tracking branch 'origin/call1' into call1
     
     Conflicts:
-    	docs/reference/telepathy-glib-docs.sgml
-    	docs/reference/telepathy-glib-sections.txt
-    	examples/future/call-cm/call-channel.c
-    	examples/future/call-cm/call-stream.c
-    	spec/Call_Content.xml
-    	spec/Call_Content_Interface_Audio_Control.xml
-    	spec/Call_Content_Interface_DTMF.xml
-    	spec/Call_Content_Interface_Media.xml
-    	spec/Call_Content_Interface_Video_Control.xml
-    	spec/Call_Content_Media_Description.xml
-    	spec/Call_Content_Media_Description_Interface_RTCP_Extended_Reports.xml
-    	spec/Call_Content_Media_Description_Interface_RTCP_Feedback.xml
-    	spec/Call_Content_Media_Description_Interface_RTP_Header_Extensions.xml
-    	spec/Call_Interface_Mute.xml
-    	spec/Call_Stream.xml
-    	spec/Call_Stream_Endpoint.xml
-    	spec/Call_Stream_Interface_Media.xml
-    	spec/Channel_Interface_DTMF.xml
-    	spec/Channel_Type_Call.xml
-    	spec/all.xml
-    	telepathy-glib/channel.xml
-    	telepathy-glib/extra-gtkdoc.h
-    	tests/dbus/call-example.c
+            docs/reference/telepathy-glib-docs.sgml
+            docs/reference/telepathy-glib-sections.txt
+            examples/future/call-cm/call-channel.c
+            examples/future/call-cm/call-stream.c
+            spec/Call_Content.xml
+            spec/Call_Content_Interface_Audio_Control.xml
+            spec/Call_Content_Interface_DTMF.xml
+            spec/Call_Content_Interface_Media.xml
+            spec/Call_Content_Interface_Video_Control.xml
+            spec/Call_Content_Media_Description.xml
+            spec/Call_Content_Media_Description_Interface_RTCP_Extended_Reports.xml
+            spec/Call_Content_Media_Description_Interface_RTCP_Feedback.xml
+            spec/Call_Content_Media_Description_Interface_RTP_Header_Extensions.xml
+            spec/Call_Interface_Mute.xml
+            spec/Call_Stream.xml
+            spec/Call_Stream_Endpoint.xml
+            spec/Call_Stream_Interface_Media.xml
+            spec/Channel_Interface_DTMF.xml
+            spec/Channel_Type_Call.xml
+            spec/all.xml
+            telepathy-glib/channel.xml
+            telepathy-glib/extra-gtkdoc.h
+            tests/dbus/call-example.c
 
 commit 89ebc5c794da4b2312ea299764f58de2bf037343
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -8190,7 +8436,7 @@ Date:   2012-02-20 15:09:37 +0000
     * Add CaptchaNotSupported error
 
 commit 50fb23a47944f2a47427010db697afe5e4a003df
-Merge: 724bf9e 67ab1ed
+Merge: 724bf9e46 67ab1ed9e
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2012-02-20 10:15:45 +0100
 
@@ -8304,7 +8550,7 @@ Date:   2012-02-14 11:53:38 +0100
     I didn't change configure.ac yet, we'll do it when actually releasing.
 
 commit 46963665e493ca20363a66ff65fb1ca7520b4629
-Merge: 892c022 b0f3d3b
+Merge: 892c02224 b0f3d3b61
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2012-02-14 11:43:34 +0100
 
@@ -8313,8 +8559,8 @@ Date:   2012-02-14 11:43:34 +0100
     Trivial conflicts.
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit b0f3d3b614db26db6c4d7a98d5f563d6e2dd060d
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
@@ -8337,7 +8583,7 @@ Date:   2012-02-13 14:59:56 +0100
     prepare 0.16.5
 
 commit 892c022246793a07a6c087bb13a97e6440fd0322
-Merge: 12297c1 f6038c7
+Merge: 12297c1d9 f6038c7c1
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2012-02-13 14:32:45 +0100
 
@@ -8384,14 +8630,14 @@ Date:   2012-02-09 15:25:48 +0000
     Reviewed-by: Vivek Dasmohapatra <vivek@collabora.co.uk>
 
 commit f654ace092c9a6c4aea6d00bd405f056766a5a50
-Merge: 8d4e753 10c3dda
+Merge: 8d4e7536c 10c3dda16
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-02-09 13:30:52 +0000
 
     Merge branch 'telepathy-glib-0.16'
     
     Conflicts:
-    	NEWS
+            NEWS
 
 commit 10c3dda166f5dbf8f28117fbe07a4c237ac81598
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -8510,27 +8756,27 @@ Date:   2012-02-06 14:42:20 +0100
     Add config.h include in all call source files
 
 commit b978d265c7e7fde904976f432d7b519dd58aec9d
-Merge: a6ce474 6d3b611
+Merge: a6ce47466 6d3b61188
 Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
 Date:   2012-02-06 14:36:14 +0100
 
     Merge branch 'master' into call1
     
     Conflicts:
-    	examples/cm/callable/conn.c
-    	examples/cm/callable/connection-manager.c
-    	examples/cm/callable/media-channel.c
-    	examples/cm/callable/media-manager.c
-    	examples/cm/callable/media-stream.c
-    	examples/cm/callable/protocol.c
-    	examples/future/call-cm/call-channel.c
-    	examples/future/call-cm/call-content.c
-    	examples/future/call-cm/call-stream.c
-    	extensions/call-content.c
-    	extensions/call-stream.c
-    	extensions/extensions-cli.c
-    	tests/dbus/call-example.c
-    	tests/dbus/callable-example.c
+            examples/cm/callable/conn.c
+            examples/cm/callable/connection-manager.c
+            examples/cm/callable/media-channel.c
+            examples/cm/callable/media-manager.c
+            examples/cm/callable/media-stream.c
+            examples/cm/callable/protocol.c
+            examples/future/call-cm/call-channel.c
+            examples/future/call-cm/call-content.c
+            examples/future/call-cm/call-stream.c
+            extensions/call-content.c
+            extensions/call-stream.c
+            extensions/extensions-cli.c
+            tests/dbus/call-example.c
+            tests/dbus/callable-example.c
 
 commit 6d3b611885665f46356623ccb296fe97a8bd8b6a
 Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
@@ -8547,7 +8793,7 @@ Date:   2012-02-06 13:38:16 +0100
     We need GValueArray for dbus-glib, and it got deprecated in GLib 2.31.x
 
 commit 8e1abf1f40d991ef23f4e33697784665681b2f2c
-Merge: 4718016 d60343f
+Merge: 4718016b8 d60343f25
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2012-02-02 17:10:39 +0000
 
@@ -8689,7 +8935,7 @@ Date:   2012-01-20 13:19:04 +0100
     tp_call_content_send_tones_async() does the queuing of events
 
 commit be92c904d473f42f6f85066bf3535125fb4f0cce
-Merge: 043c11f 8e5aa8b
+Merge: 043c11f87 8e5aa8b64
 Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
 Date:   2012-01-26 09:31:12 +0100
 
@@ -8748,7 +8994,7 @@ Date:   2012-01-24 17:07:00 +0100
     Usefull for tests wanting to run with a specific set of valid accounts.
 
 commit 49099ed58891b860444b37b29a213013c8d8f38b
-Merge: 2c99e62 0ca5332
+Merge: 2c99e62bc 0ca5332db
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2012-01-24 17:34:12 +0100
 
@@ -8793,7 +9039,7 @@ Date:   2012-01-20 15:25:41 -0500
     from pending stop to started is impossible.
 
 commit 777052913570724fb438130eb3cd86a5ada9669e
-Merge: 4988342 10f3e01
+Merge: 4988342c1 10f3e01c9
 Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
 Date:   2012-01-20 16:57:09 +0100
 
@@ -8812,7 +9058,7 @@ Date:   2012-01-20 16:47:50 +0100
     Use TpBaseChannel::get_interfaces() virtual method
 
 commit 270fbad7b136b76e31c20b7b4f0915174fb51a47
-Merge: 28f5e09 74bd945
+Merge: 28f5e095c 74bd94525
 Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
 Date:   2012-01-20 16:38:06 +0100
 
@@ -8837,7 +9083,7 @@ Date:   2012-01-19 12:50:12 +1100
     the value of the interfaces class property.
 
 commit 28f5e095c5b7424427b24c787629c4055348d450
-Merge: 4ed6467 139a0f6
+Merge: 4ed646760 139a0f63b
 Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
 Date:   2012-01-19 16:32:26 +0100
 
@@ -8896,7 +9142,7 @@ Date:   2012-01-12 10:35:03 +0100
     TpBaseMediaCallContent: Fix leaked deferred_tones
 
 commit b6bec5ffab50b59b6441d0d362968bc2cf377485
-Merge: 688bc46 7026429
+Merge: 688bc46c4 7026429f1
 Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
 Date:   2012-01-12 11:04:13 +0100
 
@@ -9643,7 +9889,7 @@ Date:   2011-12-13 14:00:54 +0100
     Simplify _finish() functions using _tp_implement_finish_*
 
 commit 15bf9ec4887974ee5a3d676821cc9f7623c72bfd
-Merge: 1a44fc2 ef4bb34
+Merge: 1a44fc2a3 ef4bb3485
 Author: Xavier Claessens <xclaesse@gmail.com>
 Date:   2011-12-13 13:27:56 +0100
 
@@ -9656,15 +9902,15 @@ Date:   2011-11-04 16:44:26 +0100
     TpSimple{Observer, Approver, Handler}: Do not use deprecated API doc examples
 
 commit 1a44fc2a3e42c329dc84d357eb286cff7cde67ee
-Merge: 31c15e7 bc9bd8a
+Merge: 31c15e7f8 bc9bd8a38
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-12-13 11:36:38 +0100
 
     Merge branch 'telepathy-glib-0.16'
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit bc9bd8a381c5162140d0418abb9f2cafe7e2d8a0
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
@@ -9679,7 +9925,7 @@ Date:   2011-12-13 11:17:56 +0100
     prepare 0.16.4
 
 commit 31c15e7f8a27db0a578cab06466ea7ade484622a
-Merge: fa5bb85 78c39c6
+Merge: fa5bb85c8 78c39c68e
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-12-13 09:47:46 +0100
 
@@ -9702,7 +9948,7 @@ Date:   2011-12-07 11:13:27 +0100
     tp_account_set_uri_scheme_association_finish: use _tp_implement_finish_void()
 
 commit 9a8084232de58a23efd255add90f378532da3420
-Merge: e88ba20 788e6a6
+Merge: e88ba20da 788e6a69c
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-12-07 11:11:33 +0100
 
@@ -9718,7 +9964,7 @@ Date:   2011-12-07 11:03:55 +0100
     tp_account_set_uri_scheme_association_finish().
 
 commit e88ba20da99e8ebd323dfb09e5c99171d5f17bb5
-Merge: 0524a4a 282f498
+Merge: 0524a4a2b 282f4985e
 Author: Danielle Madeley <danielle.madeley@collabora.co.uk>
 Date:   2011-11-28 22:21:31 +1100
 
@@ -9743,15 +9989,15 @@ Date:   2011-11-28 11:28:31 +0100
     Version 0.17.3
 
 commit 111576f9ba3bdaa1df0ebd81be3601c816c43bb9
-Merge: 175f74a 6e1187c
+Merge: 175f74a06 6e1187c36
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-11-28 11:25:42 +0100
 
     Merge branch 'telepathy-glib-0.16'
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit 6e1187c3634e284254874a65349196ba7cb150d8
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
@@ -9822,14 +10068,14 @@ Date:   2011-11-23 16:05:15 +0000
     Update the rest of the spec to 0.25.1
 
 commit 23ea29277756631413ce901b108dd4ea792a954d
-Merge: a28df1e c984fac
+Merge: a28df1e2c c984facfd
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-11-23 16:03:18 +0000
 
     Merge remote-tracking branch 'andrunko/protocol-addressing'
 
 commit a28df1e2c3c883c7a266b078c6491fa986daabcc
-Merge: fb98b47 d830c3d
+Merge: fb98b4780 d830c3d8b
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-11-23 16:01:53 +0000
 
@@ -10023,7 +10269,7 @@ Date:   2011-11-14 17:01:38 +0000
     Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
 commit f3c3f199bc239be446cd8d721f8f20f60d6ea02d
-Merge: b3b8af7 aeec485
+Merge: b3b8af77e aeec48523
 Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
 Date:   2011-11-14 16:08:40 +0000
 
@@ -10052,14 +10298,14 @@ Date:   2011-11-11 19:49:00 +0000
     Update make-release-mail.py from the Gabble.
 
 commit a39ac85357a6855aa629b35169ae8eb488667372
-Merge: d611800 079837c
+Merge: d6118003e 079837c22
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-11-11 17:47:41 +0000
 
     Merge branch 'telepathy-glib-0.16'
     
     Conflicts:
-    	configure.ac
+            configure.ac
 
 commit 079837c22b691658d6748f54a2124ab5c847e639
 Author: Will Thompson <will.thompson@collabora.co.uk>
@@ -10458,7 +10704,7 @@ Date:   2011-11-10 23:06:58 +0000
     Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
 commit 388fdb5e4663caae902c959fe3f375b71eabf3fa
-Merge: 0423b8c 09dec41
+Merge: 0423b8ce0 09dec41d5
 Author: Mikhail Zabaluev <mikhail.zabaluev@nokia.com>
 Date:   2011-11-08 17:12:03 +0200
 
@@ -10488,15 +10734,15 @@ Date:   2011-11-08 12:53:20 +0100
     prepare 0.17.0
 
 commit 3e0d6d15c1c053a40031d41912700a10130e9243
-Merge: e4d7e1e 664556d
+Merge: e4d7e1e65 664556d27
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-11-08 12:46:29 +0100
 
     Merge branch 'telepathy-glib-0.16' into release
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit 664556d27223a9d1916e981368a21e8aba6d526a
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
@@ -10511,7 +10757,7 @@ Date:   2011-11-08 12:09:58 +0100
     prepare 0.16.2
 
 commit e4d7e1e653892eb802ec9301f22bb4cc49c29a85
-Merge: 4de1cf7 c561542
+Merge: 4de1cf73e c56154233
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-11-07 17:54:32 +0100
 
@@ -10739,7 +10985,7 @@ Date:   2011-10-17 10:31:42 +0200
     https://bugs.freedesktop.org/show_bug.cgi?id=41801
 
 commit dfe6f80cf4e73d60d06fbe67b1f9c6ef0af4d545
-Merge: fa115d8 6e9c139
+Merge: fa115d82e 6e9c139d4
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-10-31 17:05:39 +0100
 
@@ -10755,7 +11001,7 @@ Date:   2011-10-31 16:48:06 +0100
     the handles.
 
 commit fa115d82e775075a9c9dbc7923ff5c375947378b
-Merge: e93e888 7fd5cd6
+Merge: e93e8889e 7fd5cd6f1
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-10-31 15:55:21 +0100
 
@@ -10773,7 +11019,7 @@ Date:   2011-10-27 12:03:19 +0200
     https://bugs.freedesktop.org/show_bug.cgi?id=42305
 
 commit e93e8889e7b75fa25911419a757e24ae23bcd4d6
-Merge: fdfaade 3f095ac
+Merge: fdfaadecf 3f095ac75
 Author: Danielle Madeley <danielle.madeley@collabora.co.uk>
 Date:   2011-10-31 22:36:51 +1100
 
@@ -10789,7 +11035,7 @@ Date:   2011-10-31 22:33:38 +1100
     know what this meant.
 
 commit fdfaadecfe8ae955c3c227eb58e43c4161b5009e
-Merge: 9a7d919 751e72f
+Merge: 9a7d9195d 751e72fec
 Author: Danielle Madeley <danielle.madeley@collabora.co.uk>
 Date:   2011-10-30 23:04:15 +1100
 
@@ -10849,7 +11095,7 @@ Date:   2011-10-24 17:45:05 +0200
     prepare 0.16.1
 
 commit 54ac9a23387546370652f5c81d2f735d1e294596
-Merge: de32456 6061577
+Merge: de32456d8 60615777a
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-10-24 16:42:51 +0200
 
@@ -10907,7 +11153,7 @@ Date:   2011-10-20 05:34:30 +0100
     Add some extra debugging to make it easier to follow AccountManager preparation
 
 commit de32456d8d460b427ab26c489c142a41319d2023
-Merge: cb67f9f dd159a5
+Merge: cb67f9f35 dd159a5d6
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-10-24 12:35:14 +0200
 
@@ -10922,7 +11168,7 @@ Date:   2011-10-20 14:43:47 +0200
     https://bugs.freedesktop.org/show_bug.cgi?id=42049
 
 commit cb67f9f357769b6a6132d4e260e5885f7cdd2bfa
-Merge: 06519d2 ba3cfa8
+Merge: 06519d20a ba3cfa861
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-10-18 17:14:28 +0200
 
@@ -11072,7 +11318,7 @@ Date:   2011-10-12 10:32:27 +0100
     Version 0.15.9
 
 commit fd25b9eced97e819322c9eba8505646cb2258f65
-Merge: c484008 8104691
+Merge: c4840088b 810469123
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-10-12 10:24:57 +0100
 
@@ -11108,7 +11354,7 @@ Date:   2011-10-11 19:30:42 +0100
     NEWS for 0.15.8
 
 commit bdacfa26393e9c336638502e34aa8a19ec636fd3
-Merge: 3caf6ba 36dc712
+Merge: 3caf6bafb 36dc71206
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-10-11 19:04:46 +0100
 
@@ -11196,7 +11442,7 @@ Date:   2011-09-06 09:10:49 +0100
     The RoomConfig mixin needs these.
 
 commit 3caf6bafbb2e4efe3154ebe1e833096d11e8ffce
-Merge: eaa0477 d805cc7
+Merge: eaa0477a4 d805cc7eb
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-10-11 18:14:23 +0100
 
@@ -11216,7 +11462,7 @@ Date:   2011-08-30 18:10:59 +0100
     fd.o#32416.)
 
 commit eaa0477a43617b2f9c4585a81c2b6bbbf7eefcc4
-Merge: 468c19f 87e6f63
+Merge: 468c19fb3 87e6f6379
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-10-11 17:45:12 +0100
 
@@ -11315,16 +11561,16 @@ Date:   2011-10-03 14:38:03 +0200
     Version 0.15.7
 
 commit f1b611ea1a5e06cd801d059db05dd00de6ad5e1c
-Merge: be94076 41be1c9
+Merge: be940765a 41be1c9d7
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-10-04 15:41:18 +0100
 
     Merge branch 'telepathy-glib-0.14'
     
     Conflicts:
-    	NEWS
-    	configure.ac
-    	telepathy-glib/message-mixin.c
+            NEWS
+            configure.ac
+            telepathy-glib/message-mixin.c
 
 commit 41be1c9d7467a643efc6c12cf3b96816d98fbd30
 Author: Will Thompson <will.thompson@collabora.co.uk>
@@ -11345,7 +11591,7 @@ Date:   2011-10-04 15:21:25 +0100
     More NEWS for 0.14.10
 
 commit 1c1c688e8c6ceda679c1473c7454ee6db2710007
-Merge: a899ab8 dff3ce5
+Merge: a899ab819 dff3ce56f
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-10-04 15:05:11 +0100
 
@@ -11666,14 +11912,14 @@ Date:   2011-09-07 17:01:59 +0100
     Update NEWS
 
 commit 55979632725dcce40bf5b6b29cfe4a5e1ed4b7f7
-Merge: 2f8725a 0cb8c83
+Merge: 2f8725a61 0cb8c83e3
 Author: Vivek Dasmohapatra <vivek@collabora.co.uk>
 Date:   2011-09-07 16:54:15 +0100
 
     Merge branch 'telepathy-glib-0.14'
     
     Conflicts:
-    	telepathy-glib/connection.c
+            telepathy-glib/connection.c
 
 commit 0cb8c83e33f8addebd35c4890c0355fa9ccd0b2c
 Author: Vivek Dasmohapatra <vivek@collabora.co.uk>
@@ -11682,14 +11928,14 @@ Date:   2011-09-07 16:39:27 +0100
     Debug messages leaked if the debug message cache is disabled, ironically
 
 commit 2f8725a6131a3b273edcada8f1d688d4d44cd37e
-Merge: 93a4228 e10e59f
+Merge: 93a4228b3 e10e59f8a
 Author: Vivek Dasmohapatra <vivek@collabora.co.uk>
 Date:   2011-09-07 16:18:37 +0100
 
     Merge HEAD, branch 'master' of git+ssh://git.freedesktop.org/git/telepathy/telepathy-glib
 
 commit e10e59f8ad45a7f89cceac185906edade97f774e
-Merge: 83c90be a1dead1
+Merge: 83c90bef4 a1dead10c
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-09-07 11:58:48 +0100
 
@@ -11820,7 +12066,7 @@ Date:   2011-08-30 15:19:10 +0100
     Two string members not freed in tp connection destructor
 
 commit 93a4228b3d73e71bae72a45a5e9daffbf5fe4d48
-Merge: 8db501d 56729b4
+Merge: 8db501d95 56729b464
 Author: Vivek Dasmohapatra <vivek@collabora.co.uk>
 Date:   2011-08-30 15:08:34 +0100
 
@@ -12049,7 +12295,7 @@ Date:   2011-08-17 11:30:08 +0200
     not have free_func and refcount on GQueue...
 
 commit 236aa055896672319ede0ee5f3f672a77c0dea97
-Merge: a7dd01e 60f6b3e
+Merge: a7dd01e28 60f6b3edf
 Author: Xavier Claessens <xclaesse@gmail.com>
 Date:   2011-08-05 15:14:22 +0200
 
@@ -12129,7 +12375,7 @@ Date:   2011-06-13 20:14:14 +0200
     objects for the roster. Add tp_connection_dup_contact_list() to get them.
 
 commit 3c45ff1964d34ebd48cb0ca46d0b4ea06767f585
-Merge: 9880797 606b841
+Merge: 98807970a 606b8413c
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-08-04 18:10:25 +0100
 
@@ -12139,7 +12385,7 @@ Date:   2011-08-04 18:10:25 +0100
     Reviewed-by: Xavier Claessens <xclaesse@gmail.com>
 
 commit 98807970a4c2710cd529459562a1e9f68ae6f5ab
-Merge: 2b39014 8370b72
+Merge: 2b3901490 8370b72c4
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-08-04 17:26:08 +0100
 
@@ -12218,7 +12464,7 @@ Date:   2011-08-01 14:26:04 +0200
     TpChannel: prepare CORE on its connection before doing anything else
 
 commit 9bd9e89432eee838986ee9e1ab84631892170be4
-Merge: f882f8c 54c187e
+Merge: f882f8c5b 54c187e5f
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-07-29 18:39:07 +0100
 
@@ -12408,7 +12654,7 @@ Date:   2011-06-06 12:09:57 +0200
     It introspects Connection.ContactList properties
 
 commit 68017d35d57e8947a02a742eadf09653e76720e0
-Merge: aed3c37 cbffbb6
+Merge: aed3c378d cbffbb62c
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-07-27 18:34:04 +0100
 
@@ -12600,7 +12846,7 @@ Date:   2011-07-27 18:12:15 +0100
     Contact: pass all wanted features to set_attributes
 
 commit aed3c378de59e1b28ffb4fe370f1ddd981c9e163
-Merge: 15838f7 f3719c0
+Merge: 15838f798 f3719c040
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-07-27 18:00:29 +0100
 
@@ -12623,7 +12869,7 @@ Date:   2011-07-19 16:35:06 +0100
     the file is missing or reading it fails, we set the timeout as usual.
 
 commit 15838f798a31540fdb919c8ba8bdbc164a9dda35
-Merge: 1fd9b08 77efcf3
+Merge: 1fd9b082e 77efcf363
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-07-27 17:58:00 +0100
 
@@ -12685,14 +12931,14 @@ Date:   2011-06-08 21:56:36 +0200
     the corresponding account
 
 commit c490a898d4d97a0521fb72a4e5759b5aa71e34a5
-Merge: 6d07832 2e4ee37
+Merge: 6d07832b7 2e4ee3789
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-07-25 19:05:29 +0100
 
     Merge remote-tracking branch 'danni/set_message-38061'
 
 commit 6d07832b73f29c943b7aceb8bc27228ed545406d
-Merge: a85dba4 bd771a6
+Merge: a85dba4ea bd771a612
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-07-25 18:43:26 +0100
 
@@ -12716,14 +12962,14 @@ Date:   2011-07-25 18:35:34 +0100
     Connection: remove useless debug from constructor
 
 commit a85dba4eab8b8e12e72eedbdc584feb65b40cbc8
-Merge: 7551732 771cd88
+Merge: 755173281 771cd883b
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-07-25 18:33:24 +0100
 
     Merge branch 'telepathy-glib-0.14'
 
 commit 771cd883be1e889fb56c1fed0fe4360f55d123f5
-Merge: 1d72e2d 563c7de
+Merge: 1d72e2d85 563c7de5b
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-07-25 18:33:19 +0100
 
@@ -13067,7 +13313,7 @@ Date:   2011-07-12 16:51:53 +0100
     NEWS for 0.15.4
 
 commit f09170ae457acd3eb638979d500f54421eca2a5a
-Merge: 99458a6 f34329f
+Merge: 99458a627 f34329fed
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-07-12 16:44:37 +0100
 
@@ -13160,7 +13406,7 @@ Date:   2011-07-12 15:53:08 +0100
     While we're there, remove unused references to 'alf'!
 
 commit 99458a6274936fb6207131705cbedc6eedc63334
-Merge: 3ea87ba 1d72e2d
+Merge: 3ea87ba10 1d72e2d85
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-07-12 16:14:07 +0200
 
@@ -13211,7 +13457,7 @@ Date:   2011-07-12 11:21:37 +0200
     Actually if that var did not receive a value, it already does a goto out anyway
 
 commit 9112203599b94092566a05cdc94908568d3ee483
-Merge: 81a5583 b39713c
+Merge: 81a558320 b39713ce4
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-07-11 17:42:31 +0100
 
@@ -13243,15 +13489,15 @@ Date:   2011-07-08 12:14:32 +0200
     We do want this change in 0.15 as that's the dev branch. CMs should be fixed.
 
 commit 0bd49ea011a9da63c48d1e8bd8e2fe424487bb6b
-Merge: ed21d5b 7b3da30
+Merge: ed21d5b43 7b3da30d9
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-07-08 12:14:09 +0200
 
     Merge branch 'telepathy-glib-0.14' into release
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit 7b3da30d95fbee84b1a9b2a5a293f17722a551a1
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
@@ -13371,7 +13617,7 @@ Date:   2011-07-04 21:22:25 +0530
     use, this results in a memory leak
 
 commit 9906b70777d65c62986f74404bb930656366106d
-Merge: f095d58 f085405
+Merge: f095d5816 f085405fe
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2011-07-01 10:16:32 +0100
 
@@ -13443,7 +13689,7 @@ Date:   2011-06-24 11:07:55 -0400
     http://people.gnome.org/~walters/docs/build-api.txt
 
 commit 750c00f6f54d6219a462953cfe4cfc0a6795993b
-Merge: 11b5f30 a49f104
+Merge: 11b5f30b5 a49f10492
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-06-24 19:34:09 +0100
 
@@ -13497,15 +13743,15 @@ Date:   2011-06-21 16:53:49 +0200
     prepare 0.15.2
 
 commit 78083d60a23441715841503dd2595a33f6bb1efc
-Merge: 820f865 23ce54c
+Merge: 820f8650b 23ce54c34
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-06-21 16:37:23 +0200
 
     Merge branch 'telepathy-glib-0.14' into release
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit 23ce54c347cc8c99e70a6ef2938a84de1a5a97ee
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
@@ -13520,7 +13766,7 @@ Date:   2011-06-21 16:19:01 +0200
     prepare 0.14.8
 
 commit 820f8650b7cb8c2b0c74d3e922ff62ea3bb0a5f8
-Merge: 66db4d7 d50e2a5
+Merge: 66db4d7e0 d50e2a51e
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-06-21 16:10:05 +0200
 
@@ -13538,7 +13784,7 @@ Date:   2011-06-21 15:39:43 +0200
     see fdo#38524.
 
 commit 66db4d7e070b6e34072ffdf5d112dd23b458c693
-Merge: e4b624d 32af717
+Merge: e4b624d25 32af717f8
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-06-17 17:08:24 +0100
 
@@ -13676,15 +13922,15 @@ Date:   2011-05-30 11:19:33 +0200
     prepare 0.15.1
 
 commit f28bf8d7fc1509d472941f0a1a13e3a28d513b1a
-Merge: 34c993a 4bde008
+Merge: 34c993a9f 4bde00853
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-05-30 11:41:34 +0200
 
     Merge branch 'telepathy-glib-0.14' into release
     
     Conflicts:
-    	NEWS
-    	configure.ac
+            NEWS
+            configure.ac
 
 commit 4bde00853bbd0089732c10eeb421a66c00740f57
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
@@ -13729,7 +13975,7 @@ Date:   2011-05-20 10:31:48 +0200
     ExampleEcho2Channel: implement SMS interface
 
 commit 6a34a59d39e7c18c343b19f212b576d7ef2dd8bb
-Merge: 396d10c 62aac19
+Merge: 396d10c4d 62aac19d9
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-05-30 09:39:16 +0200
 
@@ -13754,7 +14000,7 @@ Date:   2011-05-27 13:22:26 +0200
     tp_connection_get_balance_cb: complete the operation if we failed to get Balance
 
 commit 396d10c4d48f9b36822ec4a34f104473d7e013c7
-Merge: 4054e4d ded1660
+Merge: 4054e4d9d ded16605f
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-05-27 13:05:27 +0200
 
@@ -13787,14 +14033,14 @@ Date:   2011-05-24 12:21:23 +0200
     factor out prepare_core_and_claim()
 
 commit 397074a398c15b7e81c92f19bc713e0ded04f3df
-Merge: 5164836 ad7291a
+Merge: 5164836f3 ad7291aa8
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-05-26 09:45:38 +0200
 
     Merge branch 'telepathy-glib-0.14'
 
 commit 5164836f39aca43f0d8cd095e974a2e59ac5f364
-Merge: 2ba2d14 fc6181e
+Merge: 2ba2d147f fc6181e6a
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-05-25 14:27:08 +0100
 
@@ -13832,14 +14078,14 @@ Date:   2011-05-18 11:15:07 +0100
     Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
 commit 58b17e55e3d941aad673d4402141a5c5aebfb1b4
-Merge: c2f9bae bbe027c
+Merge: c2f9bae72 bbe027c08
 Author: Emilio Pozuelo Monfort <emilio.pozuelo@collabora.co.uk>
 Date:   2011-05-17 16:50:32 +0100
 
     Merge remote-tracking branch 'danni/balance-feature-36334' into balance-feature-36334
     
     Conflicts:
-    	telepathy-glib/connection-internal.h
+            telepathy-glib/connection-internal.h
 
 commit c2f9bae72b15b82cdb8bad0f20bc12c09d93b6e4
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
@@ -13869,7 +14115,7 @@ Date:   2011-05-17 09:02:55 +0200
     prepare 0.15.0
 
 commit 7f64bc9ef6dce174f258da8cb106228d11e7d16c
-Merge: f1e9435 7c60cb8
+Merge: f1e9435ad 7c60cb824
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-05-17 08:51:19 +0200
 
@@ -13957,21 +14203,21 @@ Date:   2011-05-16 10:50:30 +0200
       - tp_type_dbus_hash_o_28ss_29
 
 commit fd989060b2bfb80b29a2245ee5dc122a9b130841
-Merge: 2174e77 e44f08c
+Merge: 2174e7733 e44f08c22
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2011-05-16 09:54:19 +0100
 
     Merge branch 'telepathy-glib-0.14'
 
 commit e44f08c22e15bad0ec0448876582777cd1ae28b6
-Merge: 42360d0 3a3ee21
+Merge: 42360d0d2 3a3ee21b2
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2011-05-16 09:54:12 +0100
 
     Merge remote-tracking branch 'upstream/telepathy-glib-0.14' into telepathy-glib-0.14
 
 commit 2174e77334ff2cdd82d45e85abf157a2db3314c8
-Merge: 28d3db1 42360d0
+Merge: 28d3db1f6 42360d0d2
 Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
 Date:   2011-05-16 09:48:03 +0100
 
@@ -14406,7 +14652,7 @@ Date:   2011-05-12 15:51:01 +1000
     Add support for retrieving Conn.I.Balance
 
 commit f580804514058fd0d9044b5536696b26c5922841
-Merge: 03e7c00 3a3ee21
+Merge: 03e7c0039 3a3ee21b2
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-05-11 18:27:58 +0100
 
@@ -14497,7 +14743,7 @@ Date:   2011-05-09 15:18:40 +0200
      - ChannelDispatcher.PresentChannel()
 
 commit 3d327b76fc2c1bf2b1553dc295a8c77ee900250d
-Merge: 97f9f05 411467f
+Merge: 97f9f0576 411467f1f
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-05-05 19:10:46 +0100
 
@@ -14527,7 +14773,7 @@ Date:   2011-05-05 17:56:28 +0100
     single-argument form and squash the warning.
 
 commit 97f9f0576723448364ddd959f3fdc76affe6ca7f
-Merge: fefef1e 0d7199c
+Merge: fefef1e47 0d7199c22
 Author: Mike Ruprecht <mike.ruprecht@collabora.co.uk>
 Date:   2011-05-04 22:40:34 -0500
 
@@ -14548,7 +14794,7 @@ Date:   2011-05-04 20:51:51 -0500
     object as well.
 
 commit fefef1e473f3ca188beb631458dd7a724d785b51
-Merge: 084226e 134634a
+Merge: 084226e7a 134634a73
 Author: Vivek Dasmohapatra <vivek@collabora.co.uk>
 Date:   2011-05-04 14:07:42 +0100
 
@@ -14568,7 +14814,7 @@ Date:   2011-05-04 13:48:05 +0100
     dbus_connection_send_with_reply does not take ownership so we must unref
 
 commit 084226e7a4d7f6813febba2b4a75f559619beda0
-Merge: c0b13f7 cbccc2e
+Merge: c0b13f7cc cbccc2ebb
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-05-02 14:27:49 +0100
 
@@ -14591,14 +14837,14 @@ Date:   2011-01-06 10:41:02 +0000
     Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
 
 commit 5df746489af48d364defcf03bc57a980f1d65964
-Merge: d2055e4 c7c9459
+Merge: d2055e41e c7c94590c
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-04-28 11:54:31 +0100
 
     Merge branch '0.14'
 
 commit c7c94590c280679a385e70654876b0a0cf5e1b46
-Merge: bc3aac0 ca6e114
+Merge: bc3aac03d ca6e114be
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-04-28 11:52:25 +0100
 
@@ -14646,17 +14892,17 @@ Date:   2011-04-21 17:17:30 +0100
     test suite!
 
 commit da80d7883531f427985263f549f42d38aea385a7
-Merge: 9037339 eefcf8a
+Merge: 90373392b eefcf8ad0
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-04-21 10:03:00 +0100
 
     Merge branch '0.14'
     
     Conflicts:
-    	configure.ac
-    	spec/Connection_Interface_Simple_Presence.xml
-    	telepathy-glib/base-client.c
-    	telepathy-glib/presence-mixin.c
+            configure.ac
+            spec/Connection_Interface_Simple_Presence.xml
+            telepathy-glib/base-client.c
+            telepathy-glib/presence-mixin.c
 
 commit eefcf8ad035a5880688f73cdde829690e9d4afc7
 Author: Will Thompson <will.thompson@collabora.co.uk>
@@ -14683,7 +14929,7 @@ Date:   2011-04-20 18:12:19 +0100
     Add missing docs for MaxStatusMessageLength stuff
 
 commit 22701518de0d8e4352c29d8a315d1831fa9ba60f
-Merge: 86e7d89 fe09fc0
+Merge: 86e7d8905 fe09fc00f
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-04-20 17:46:02 +0100
 
@@ -14835,7 +15081,7 @@ Date:   2011-04-05 15:27:06 +0200
     add tp_base_client_is_handling_channel (fdo #35990)
 
 commit 90373392bf4efe4a9be44066c0e87f396384bc96
-Merge: 5b0f7af 37bf2be
+Merge: 5b0f7afdc 37bf2be02
 Author: Andre Moreira Magalhaes (andrunko) <andre.magalhaes@collabora.co.uk>
 Date:   2011-04-20 12:07:36 -0300
 
@@ -15039,7 +15285,7 @@ Date:   2011-04-14 02:44:32 -0300
     Updated Conn.SimplePresence to support MaximumStatusMessageLength.
 
 commit 6fccb59746e9432e4eaface983f9f04e600f745d
-Merge: 10e4835 abfc901
+Merge: 10e4835c7 abfc9014b
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-04-12 17:13:01 +0200
 
@@ -15052,7 +15298,7 @@ Date:   2011-04-11 15:59:19 +0200
     tp_base_protocol_get_immutable_properties: add Avatars property
 
 commit 10e4835c705fc17b875bd2262ddf154f5ab09ab1
-Merge: 01ae0bc 8f047aa
+Merge: 01ae0bca1 8f047aaaf
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-04-12 15:55:44 +0200
 
@@ -15083,7 +15329,7 @@ Date:   2011-04-12 14:21:50 +0200
     tp_proxy_add_interfaces: improve debug message
 
 commit c7e6750de39024df947b7b4a6ce4c73f92e14198
-Merge: 8ac64f0 1b46c32
+Merge: 8ac64f0ed 1b46c3259
 Author: Olli Salli <ollisal@gmail.com>
 Date:   2011-04-12 13:34:07 +0300
 
@@ -15189,7 +15435,7 @@ Date:   2011-04-07 16:56:02 +0300
     tp_connection_got_interfaces_cb: Refactor out introspection queuing loop
 
 commit 01ae0bca11e6656a2d046d602d922d031a9ca6f9
-Merge: 256fd0a 11d464a
+Merge: 256fd0a3a 11d464aa6
 Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
 Date:   2011-04-05 16:43:18 +0200
 
@@ -15202,14 +15448,14 @@ Date:   2011-04-05 15:27:06 +0200
     add tp_base_client_is_handling_channel (fdo #35990)
 
 commit 256fd0a3a213e4ee473f4d7aa0ca8657ac8e7aac
-Merge: 56cf978 8ac64f0
+Merge: 56cf9781f 8ac64f0ed
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-03-31 15:11:30 +0100
 
     Merge branch 'telepathy-glib-0.14'
     
     Conflicts:
-    	configure.ac
+            configure.ac
 
 commit 8ac64f0ed40681f91f507eed139fef1279e4333b
 Author: Will Thompson <will.thompson@collabora.co.uk>
@@ -15233,7 +15479,7 @@ Date:   2011-03-31 14:03:07 +0100
     NEWS for 0.14.2
 
 commit 17be7923400ae8aa0d4c203bb86569ce855a9b5a
-Merge: b2e7dac 1c430b4
+Merge: b2e7daca8 1c430b4f7
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-03-31 13:46:42 +0100
 
@@ -15282,14 +15528,14 @@ Date:   2011-03-25 13:25:12 +0000
     base_conn_change_status: refer to _disconnect_with_dbus_error
 
 commit 56cf9781fb2bcfb2d7f92255e74ec2e2bdb1facc
-Merge: d4aabe3 55d3fec
+Merge: d4aabe356 55d3fecc4
 Author: Will Thompson <will.thompson@collabora.co.uk>
 Date:   2011-03-22 13:17:36 +0000
 
     Merge branch 'telepathy-glib-0.14'
     
     Conflicts:
-    	configure.ac
+            configure.ac
 
 commit 55d3fecc427d3225f150092b0d63dcaa854957c6
 Author: Will Thompson <will.thompson@collabora.co.uk>
