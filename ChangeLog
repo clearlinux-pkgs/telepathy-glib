@@ -1,8 +1,14 @@
-commit d4c364d64f6426c7d929e14288e87d03f704bd6a
+commit 424e12a3277d23bc8cb3e84a1659a0939ade819e
 Author: Alexander Akulich <akulichalexander@gmail.com>
 Date:   2021-01-26 18:38:26 +0300
 
     Prepare release 0.24.2
+
+commit ef171780277fb7677b75fd08933a60447ae43d5d
+Author: Martin Jones <martin.jones@jollamobile.com>
+Date:   2021-02-03 18:44:55 +0300
+
+    Fix crash when creating a conference call
 
 commit e7dcfacbf54caff1bb4103cec6985a18db5db923
 Author: Alexander Akulich <akulichalexander@gmail.com>
